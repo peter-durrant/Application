@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{99622630-6C23-46BD-8B64-ABB1FC177255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleContract", "ModuleContract\ModuleContract.csproj", "{24ED38BF-0EA0-48F2-B677-477DD27EB097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleLoader", "ModuleLoader\ModuleLoader.csproj", "{2816C338-E177-413E-80E7-63382349ECCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{AEEB27B4-3920-4D35-948A-B28AC65856C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{85C2743D-3C4E-46EC-98D1-2EB57353ED31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1", "Module1\Module1.csproj", "{E0767419-02C9-4A84-A608-EC98872060F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2", "Module2\Module2.csproj", "{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Core", "Presentation.Core\Presentation.Core.csproj", "{63C25E57-A90E-42B7-9C18-D59C0E0379CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99622630-6C23-46BD-8B64-ABB1FC177255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99622630-6C23-46BD-8B64-ABB1FC177255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99622630-6C23-46BD-8B64-ABB1FC177255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99622630-6C23-46BD-8B64-ABB1FC177255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24ED38BF-0EA0-48F2-B677-477DD27EB097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24ED38BF-0EA0-48F2-B677-477DD27EB097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24ED38BF-0EA0-48F2-B677-477DD27EB097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24ED38BF-0EA0-48F2-B677-477DD27EB097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2816C338-E177-413E-80E7-63382349ECCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2816C338-E177-413E-80E7-63382349ECCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2816C338-E177-413E-80E7-63382349ECCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2816C338-E177-413E-80E7-63382349ECCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEEB27B4-3920-4D35-948A-B28AC65856C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEEB27B4-3920-4D35-948A-B28AC65856C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEEB27B4-3920-4D35-948A-B28AC65856C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEEB27B4-3920-4D35-948A-B28AC65856C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0767419-02C9-4A84-A608-EC98872060F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0767419-02C9-4A84-A608-EC98872060F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0767419-02C9-4A84-A608-EC98872060F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0767419-02C9-4A84-A608-EC98872060F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63C25E57-A90E-42B7-9C18-D59C0E0379CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63C25E57-A90E-42B7-9C18-D59C0E0379CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63C25E57-A90E-42B7-9C18-D59C0E0379CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63C25E57-A90E-42B7-9C18-D59C0E0379CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0767419-02C9-4A84-A608-EC98872060F7} = {85C2743D-3C4E-46EC-98D1-2EB57353ED31}
+		{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088} = {85C2743D-3C4E-46EC-98D1-2EB57353ED31}
+	EndGlobalSection
+EndGlobal
