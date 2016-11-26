@@ -5,6 +5,7 @@ This is a repository for trying out architectural ideas in C# and WPF.
 ## Principles
 
 The architecture attempts to demonstrate a number of key objectives including, but not limited to:
+
 1. Modularity - independent modules of functionality loaded using [MEF] (https://mef.codeplex.com/).
 2. Shared components - re-usable models, UI components.
 3. Cross cutting - logging (implementation independent, implemented using [NLog](http://nlog-project.org/)).
