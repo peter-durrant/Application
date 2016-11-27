@@ -9,7 +9,7 @@ The architecture attempts to demonstrate a number of key objectives including, b
 1. Modularity - independent modules of functionality loaded using [MEF] (https://mef.codeplex.com/).
 2. Shared components - re-usable models, UI components.
 3. Cross cutting - logging (implementation independent, implemented using [NLog](http://nlog-project.org/)).
-4. Localisation - support different languages.
+4. Localisation - support different languages, assisted using [Visual Locbaml](http://visuallocbaml.com/).
 5. DDD - domain driven design.
 6. TDD - test driven design, supported using [NSubstitute](http://nsubstitute.github.io/).
 
@@ -49,3 +49,26 @@ This loads all modules from the current build folder.
 ### Presentation.Core
 
 [Presentation.Core](./Presentation.Core) provides supporting UI functionality and UI components for WPF.
+
+## Localisation
+
+[Visual Locbaml](http://visuallocbaml.com/) is an free open-source tool to assist WPF application localisation.
+
+To localise a WPF application, follow the instructions [Prepare for Localisation](http://visuallocbaml.com/docs/prepare_for_localization.html).
+
+To summarise:
+
+Add `UICulture` all relevant `.csproj` files (set appropriately).
+```c#
+<PropertyGroup>
+  <UICulture>en-US</UICulture>
+</PropertyGroup>
+```
+
+In all relevant projects, add to AssemblyInfo (setting default language):
+```c#
+using System.Resources;
+[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+```
+
+Rebuild the project. This will add resources to a en-US folder in the build folder. Use Visual Locbaml to create new resources.
