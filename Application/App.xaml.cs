@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Hdd.Logger;
 
 namespace Hdd.Application
 {

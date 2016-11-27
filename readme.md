@@ -19,6 +19,15 @@ The architecture attempts to demonstrate a number of key objectives including, b
 
 [Application](./Application) is the main application. This is responsible for loading the compatible modules so that the user can access the functionality of different modules.
 
+The `MainWindowViewModel` has a `CompositionHelper` from [ModuleLoader](./ModuleLoader) to load any modules that implement `IModuleContract`.
+
+Find all modules that implement IModuleContract:
+```c#
+_compositionHelper = new CompositionHelper<IModuleContract>();
+_compositionHelper.AssembleModuleComponents();
+```
+This loads all modules from the current build folder.
+
 ### Logger
 
 [Logger](./Logger) is the logging library that wraps the NLog implementation. This enables the logger to be replaced without affecting any logging code spread throughout the application.
@@ -34,6 +43,8 @@ The architecture attempts to demonstrate a number of key objectives including, b
 ### ModuleLoader
 
 [ModuleLoader](./ModuleLoader) provides the composition service to load modules used by [Application](./Application).
+
+`CompositionHelper` is a generic class that can load modules that support a specified contract.
 
 ### Presentation.Core
 

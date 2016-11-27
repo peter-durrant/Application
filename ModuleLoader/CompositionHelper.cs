@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using Hdd.Logger;
-using Hdd.ModuleContract;
 
 namespace Hdd.ModuleLoader
 {
-   public class CompositionHelper
+   public class CompositionHelper<T>
    {
       private readonly ILogger _logger;
 
@@ -17,7 +16,7 @@ namespace Hdd.ModuleLoader
       }
 
       [ImportMany]
-      public IEnumerable<Lazy<IModuleContract>> ModulePlugins { get; set; }
+      public IEnumerable<Lazy<T>> Modules { get; set; }
 
       public void AssembleModuleComponents()
       {
