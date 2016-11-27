@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Hdd.Presentation.Core.NameValueControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Hdd.Presentation.Core"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="300" d:DataContext="{d:DesignInstance local:NameValueControl}">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+                <Setter Property="Margin" Value="8" />
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Background" Value="Black" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0"
+               Content="{Binding Path=NameText}"
+               Width="Auto"
+               VerticalAlignment="Center" />
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 Text="{Binding Path=ValueText}"
+                 Width="Auto"
+                 VerticalAlignment="Center" />
+    </Grid>
+</UserControl>

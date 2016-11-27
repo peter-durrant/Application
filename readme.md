@@ -50,6 +50,10 @@ This loads all modules from the current build folder.
 
 [Presentation.Core](./Presentation.Core) provides supporting UI functionality and UI components for WPF.
 
+User controls (`UserControl`) need to implement dependency properties (view models are not practical).
+
+Note: to aid development, Visual Studio provides `propdp` as a shortcut to generate the boiler-plate code for dependency properties.
+
 ## Localisation
 
 [Visual Locbaml](http://visuallocbaml.com/) is an free open-source tool to assist WPF application localisation.
