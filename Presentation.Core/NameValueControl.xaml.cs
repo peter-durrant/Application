@@ -24,13 +24,11 @@ namespace Hdd.Presentation.Core
          (Content as FrameworkElement).DataContext = this;
       }
 
-
       public string NameText
       {
          get { return (string) GetValue(NameTextProperty); }
          set { SetValue(NameTextProperty, value); }
       }
-
 
       public string ValueText
       {
