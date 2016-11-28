@@ -56,6 +56,8 @@ Note: to aid development, Visual Studio provides `propdp` as a shortcut to gener
 
 ## Localisation
 
+### UI Localisation
+
 [Visual Locbaml](http://visuallocbaml.com/) is an free open-source tool to assist WPF application localisation.
 
 To localise a WPF application, follow the instructions [Prepare for Localisation](http://visuallocbaml.com/docs/prepare_for_localization.html).
@@ -76,3 +78,9 @@ using System.Resources;
 ```
 
 Rebuild the project. This will add resources to a en-US folder in the build folder. Use Visual Locbaml to create new resources.
+
+### String Resources
+
+Modules are built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/<language code>/StringResources.xaml.
+
+A `ResourceDictionary` can loaded using the `ResourceDictionaryLoader`. See [Module1Module](./Module1/Module1Module.cs) for an example of use.
