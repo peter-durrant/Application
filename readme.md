@@ -81,6 +81,6 @@ Rebuild the project. This will add resources to a en-US folder in the build fold
 
 ### String Resources
 
-Modules are built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/<language code>/StringResources.xaml.
+Modules are built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/\<language code>/StringResources.xaml.
 
 A `ResourceDictionary` can loaded using the `ResourceDictionaryLoader`. See [Module1Module](./Module1/Module1Module.cs) for an example of use.
