@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows;
+using Hdd.Presentation.Core;
 
 namespace Hdd.Application
 {
@@ -15,6 +16,7 @@ namespace Hdd.Application
 
          var logger = new Logger.Logger();
          logger.Info(this, "Application starting up");
+         logger.Info(this, $"Language: {ResourceDictionaryLoader.GetLanguage}");
       }
 
       private void App_OnStartup(object sender, StartupEventArgs e)

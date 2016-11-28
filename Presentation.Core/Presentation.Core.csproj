@@ -50,6 +50,7 @@
     <Compile Include="NameValueControl.xaml.cs">
       <DependentUpon>NameValueControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ResourceDictionaryLoader.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

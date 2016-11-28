@@ -60,6 +60,10 @@
       <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
       <Name>ModuleContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.Core\Presentation.Core.csproj">
+      <Project>{63c25e57-a90e-42b7-9c18-d59c0e0379ce}</Project>
+      <Name>Presentation.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\languages\de\StringResources.xaml">

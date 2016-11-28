@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel.Composition;
-using System.Globalization;
+﻿using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows;
 using Hdd.Logger;
 using Hdd.ModuleContract;
+using Hdd.Presentation.Core;
 
 namespace Hdd.Module1
 {
@@ -12,11 +11,12 @@ namespace Hdd.Module1
    public class Module1Module : IModuleContract
    {
       private readonly ILogger _logger;
-      private ResourceDictionary _resourceDictionary;
+      private readonly ResourceDictionary _resourceDictionary;
 
       public Module1Module()
       {
          _logger = new Logger.Logger();
+         _resourceDictionary = ResourceDictionaryLoader.Load();
       }
 
       public string Name => "Module 1";
@@ -28,23 +28,6 @@ namespace Hdd.Module1
          _logger.Info(this, "DoSomething");
       }
 
-      public string SayHello
-      {
-         get
-         {
-            var language = "en-US";
-            if (CultureInfo.DefaultThreadCurrentCulture != null)
-            {
-               language = CultureInfo.DefaultThreadCurrentCulture.Name;
-            }
-            _resourceDictionary = new ResourceDictionary
-            {
-               Source =
-                  new Uri($"/Module1;component/resources/languages/{language}/StringResources.xaml",
-                     UriKind.RelativeOrAbsolute)
-            };
-            return (string) _resourceDictionary["Hello"];
-         }
-      }
+      public string SayHello => (string) _resourceDictionary["Hello"];
    }
 }
