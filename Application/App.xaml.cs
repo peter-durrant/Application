@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System.Windows;
 
 namespace Hdd.Application
 {
@@ -9,6 +10,9 @@ namespace Hdd.Application
    {
       public App()
       {
+         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
+         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
+
          var logger = new Logger.Logger();
          logger.Info(this, "Application starting up");
       }

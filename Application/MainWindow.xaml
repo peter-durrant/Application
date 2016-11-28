@@ -15,8 +15,11 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <core:NameValueControl NameText="{Binding Path=Value.Name, Mode=OneWay}"
-                                               ValueText="{Binding Path=Value.Version, Mode=OneWay}" />
+                        <StackPanel>
+                            <core:NameValueControl NameText="{Binding Path=Value.Name, Mode=OneWay}"
+                                                   ValueText="{Binding Path=Value.Version, Mode=OneWay}" />
+                            <Label x:Uid="SayHello" Content="{Binding Path=Value.SayHello, Mode=OneWay}" Foreground="Black" />
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

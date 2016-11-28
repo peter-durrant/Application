@@ -5,5 +5,6 @@
       string Name { get; }
       string Version { get; }
       void DoSomething();
+      string SayHello { get; }
    }
 }
