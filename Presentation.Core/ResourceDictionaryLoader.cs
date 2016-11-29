@@ -26,7 +26,7 @@ namespace Hdd.Presentation.Core
          {
             Source =
                new Uri(
-                  $"/{Assembly.GetCallingAssembly().GetName().Name};component/resources/languages/{GetLanguage}/StringResources.xaml",
+                  $"/{Assembly.GetCallingAssembly().GetName().Name}.Resources;component/resources/languages/{GetLanguage}/StringResources.xaml",
                   UriKind.RelativeOrAbsolute)
          };
          return resourceDictionary;
