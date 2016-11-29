@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Reflection;
 using Hdd.Logger;
 
 namespace Hdd.ModuleLoader
@@ -25,6 +26,12 @@ namespace Hdd.ModuleLoader
             var catalog = new DirectoryCatalog(@".", "*.dll");
             var container = new CompositionContainer(catalog);
             container.ComposeParts(this);
+
+            foreach (var module in Modules)
+            {
+               var moduleName = Assembly.GetAssembly(module.Value.GetType()).GetName();
+               _logger.Info(this, $"Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T).Namespace}.{typeof(T).Name})");
+            }
          }
          catch (Exception e)
          {

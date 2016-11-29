@@ -19,14 +19,9 @@ namespace Hdd.Module2
          _resourceDictionary = ResourceDictionaryLoader.Load();
       }
 
-      public string Name => "Module 2";
+      public string Name => Assembly.GetAssembly(GetType()).GetName().Name;
 
       public string Version => Assembly.GetAssembly(typeof(Module2Module)).GetName().Version.ToString();
-
-      public void DoSomething()
-      {
-         _logger.Info(this, "DoSomething");
-      }
 
       public string SayHello => (string) _resourceDictionary["Hello"];
    }

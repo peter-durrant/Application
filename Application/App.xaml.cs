@@ -15,6 +15,7 @@ namespace Hdd.Application
          CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
 
          var logger = new Logger.Logger();
+         logger.Info(this, new string('-', 100));
          logger.Info(this, "Application starting up");
          logger.Info(this, $"Language: {ResourceDictionaryLoader.GetLanguage}");
       }
