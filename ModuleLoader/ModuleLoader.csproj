@@ -33,12 +33,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionHelper.cs" />
@@ -48,10 +42,6 @@
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
       <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ModuleContract\ModuleContract.csproj">
-      <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
-      <Name>ModuleContract</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
