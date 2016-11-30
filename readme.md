@@ -36,9 +36,15 @@ This loads all modules from the current build folder.
 
 [Module1](./Module1) and [Module2](./Module2) are separate modules that provide functionality to demonstrate how modules can be used by the main application. Implementation is limited to displaying the name and version of each module.
 
-### ModuleContract
+### Feature 1
 
-[Contract](./Contract) defines the contract that [Module1](./Module1) and [Module2](./Module2) must implement in order to be loaded by [Application](./Application).
+[Feature1](./Feature1) is a module that provides functionality to the application or other modules.
+
+### Contract
+
+[IModuleContract](./Contract) defines the contract that [Module1](./Module1) and [Module2](./Module2) must implement in order to be loaded by [Application](./Application).
+
+[IFeature1Contract](./Contract) defines the contract that [Feature1](./Feature1) must implement in order to be loaded by [Application](./Application).
 
 ### ModuleLoader
 
