@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{99622630-6C23-46BD-8B64-ABB1FC177255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "ModuleContract\Contract.csproj", "{24ED38BF-0EA0-48F2-B677-477DD27EB097}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{24ED38BF-0EA0-48F2-B677-477DD27EB097}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleLoader", "ModuleLoader\ModuleLoader.csproj", "{2816C338-E177-413E-80E7-63382349ECCF}"
 EndProject
