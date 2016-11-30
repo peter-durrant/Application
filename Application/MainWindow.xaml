@@ -18,7 +18,11 @@
                         <StackPanel>
                             <core:NameValueControl NameText="{Binding Path=Value.Name, Mode=OneWay}"
                                                    ValueText="{Binding Path=Value.Version, Mode=OneWay}" />
-                            <Label x:Uid="SayHello" Content="{Binding Path=Value.SayHello, Mode=OneWay}" Foreground="Black" />
+                            <Label x:Uid="SayHello" Content="{Binding Path=Value.SayHello, Mode=OneWay}"
+                                   Foreground="Black" />
+                            <Button Content="{Binding Path=Value.Name, Mode=OneWay}"
+                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.StartModuleCommand, Mode=OneWay}"
+                                    CommandParameter="{Binding Path=Value.Name, Mode=OneWay}" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows;
+using Hdd.Contract;
 using Hdd.Logger;
-using Hdd.ModuleContract;
 using Hdd.Presentation.Core;
 
 namespace Hdd.Module2

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
+using Hdd.Contract;
 using Hdd.Logger;
-using Hdd.ModuleContract;
 using Hdd.ModuleLoader;
 using Hdd.Presentation.Core;
 
@@ -11,6 +13,7 @@ namespace Hdd.Application
    {
       private readonly CompositionHelper<IModuleContract> _compositionHelper;
       private readonly ILogger _logger;
+      private ICommand _startModuleCommand;
 
       public MainWindowViewModel()
       {
@@ -24,5 +27,18 @@ namespace Hdd.Application
       }
 
       public IEnumerable<Lazy<IModuleContract>> Modules => _compositionHelper.Modules;
+
+      public ICommand StartModuleCommand
+      {
+         get
+         {
+            return _startModuleCommand =
+               _startModuleCommand ?? new RelayCommand<string>(x =>
+               {
+                  _logger.Info(this, $"Starting module {x}");
+                  MessageBox.Show(x);
+               });
+         }
+      }
    }
 }

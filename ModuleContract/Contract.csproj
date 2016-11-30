@@ -7,8 +7,8 @@
     <ProjectGuid>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hdd.ModuleContract</RootNamespace>
-    <AssemblyName>ModuleContract</AssemblyName>
+    <RootNamespace>Hdd.Contract</RootNamespace>
+    <AssemblyName>Hdd.Contract</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModuleContract.cs" />
+    <Compile Include="IFeature1Contract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

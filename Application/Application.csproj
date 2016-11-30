@@ -99,9 +99,9 @@
       <Project>{aeeb27b4-3920-4d35-948a-b28ac65856c8}</Project>
       <Name>Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModuleContract\ModuleContract.csproj">
-      <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
-      <Name>ModuleContract</Name>
+    <ProjectReference Include="..\ModuleContract\Contract.csproj">
+      <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
+      <Name>Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModuleLoader\ModuleLoader.csproj">
       <Project>{2816c338-e177-413e-80e7-63382349eccf}</Project>

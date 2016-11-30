@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0767419-02C9-4A84-A608-EC98872060F7}</ProjectGuid>
+    <ProjectGuid>{076B29E7-74AB-4113-916B-122EC8B2D64B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hdd.Module1</RootNamespace>
-    <AssemblyName>Hdd.Module1</AssemblyName>
+    <RootNamespace>Hdd.Feature1</RootNamespace>
+    <AssemblyName>Hdd.Feature1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,37 +33,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module1Module.cs" />
+    <Compile Include="Feature1Feature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Module1.Resources\Module1.Resources.csproj">
-      <Project>{40b6bb8d-55c8-4448-8c0e-d96609b8a2e8}</Project>
-      <Name>Module1.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ModuleContract\Contract.csproj">
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Presentation.Core\Presentation.Core.csproj">
-      <Project>{63c25e57-a90e-42b7-9c18-d59c0e0379ce}</Project>
-      <Name>Presentation.Core</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

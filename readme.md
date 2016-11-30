@@ -38,7 +38,7 @@ This loads all modules from the current build folder.
 
 ### ModuleContract
 
-[ModuleContract](./ModuleContract) defines the contract that [Module1](./Module1) and [Module2](./Module2) must implement in order to be loaded by [Application](./Application).
+[Contract](./Contract) defines the contract that [Module1](./Module1) and [Module2](./Module2) must implement in order to be loaded by [Application](./Application).
 
 ### ModuleLoader
 

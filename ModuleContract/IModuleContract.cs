@@ -1,4 +1,4 @@
-﻿namespace Hdd.ModuleContract
+﻿namespace Hdd.Contract
 {
    public interface IModuleContract
    {
