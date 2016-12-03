@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections;
+using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows;
 using Hdd.Contract;
@@ -18,6 +19,8 @@ namespace Hdd.Module2
          _logger = new Logger.Logger();
          _resourceDictionary = ResourceDictionaryLoader.Load();
       }
+
+      public IDictionary ResourceDictionary => _resourceDictionary;
 
       public string Name => Assembly.GetAssembly(GetType()).GetName().Name;
 

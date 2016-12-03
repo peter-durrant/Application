@@ -4,5 +4,7 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <system:String x:Key="Hello">Bonjour</system:String>
+    <system:String x:Key="OpenCommandName">Ouvert</system:String>
+    <system:String x:Key="CloseCommandName">Fermer</system:String>
 
 </ResourceDictionary>

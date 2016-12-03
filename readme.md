@@ -90,3 +90,17 @@ Rebuild the project. This will add resources to a en-US folder in the build fold
 Modules are built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/\<language code>/StringResources.xaml.
 
 A `ResourceDictionary` can loaded using the `ResourceDictionaryLoader`. See [Module1Module](./Module1/Module1Module.cs) for an example of use.
+
+## UI
+
+### Main Menu / Module Commands
+
+The main menu is constructed taking into account each loaded module and features language localisation.
+
+Each command identified as a menu item (or module command) implements `IModuleCommand` and has the `ModuleLocationAttribute`.
+
+```c#
+[ModuleLocation("File")]
+[Export(typeof(IModuleCommand))]
+public class MyCommand : IModuleCommand
+```

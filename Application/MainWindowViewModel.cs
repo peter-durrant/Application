@@ -6,6 +6,7 @@ using Hdd.Contract;
 using Hdd.Logger;
 using Hdd.ModuleLoader;
 using Hdd.Presentation.Core;
+using Hdd.Presentation.Module;
 
 namespace Hdd.Application
 {
@@ -13,6 +14,7 @@ namespace Hdd.Application
    {
       private readonly CompositionHelper<IModuleContract> _compositionHelper;
       private readonly ILogger _logger;
+      private readonly CompositionHelper<IModuleContract, IModuleLocationAttribute> _menuCompositionHelper;
       private ICommand _startModuleCommand;
 
       public MainWindowViewModel()
@@ -23,6 +25,11 @@ namespace Hdd.Application
          // load modules
          _logger.Info(this, "Load modules");
          _compositionHelper = new CompositionHelper<IModuleContract>();
+         _compositionHelper.AssembleModuleComponents();
+
+         // load menu modules
+         _logger.Info(this, "Load menus");
+         _menuCompositionHelper = new CompositionHelper<IModuleContract, IModuleLocationAttribute>();
          _compositionHelper.AssembleModuleComponents();
       }
 

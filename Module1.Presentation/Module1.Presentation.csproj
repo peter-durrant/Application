@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0767419-02C9-4A84-A608-EC98872060F7}</ProjectGuid>
+    <ProjectGuid>{AE795556-C9B9-482E-81B1-14F42B06F05F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hdd.Module1</RootNamespace>
-    <AssemblyName>Hdd.Module1</AssemblyName>
+    <RootNamespace>Hdd.Module1.Presentation</RootNamespace>
+    <AssemblyName>Hdd.Module1.Presentation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,38 +33,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IModule1Contract.cs" />
-    <Compile Include="Module1Module.cs" />
+    <Compile Include="Module1Commands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Module1.Resources\Module1.Resources.csproj">
-      <Project>{40b6bb8d-55c8-4448-8c0e-d96609b8a2e8}</Project>
-      <Name>Module1.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Contract\Contract.csproj">
-      <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
+      <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Module1\Module1.csproj">
+      <Project>{e0767419-02c9-4a84-a608-ec98872060f7}</Project>
+      <Name>Module1</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation.Core\Presentation.Core.csproj">
-      <Project>{63c25e57-a90e-42b7-9c18-d59c0e0379ce}</Project>
+      <Project>{63C25E57-A90E-42B7-9C18-D59C0E0379CE}</Project>
       <Name>Presentation.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.Module\Presentation.Module.csproj">
+      <Project>{9d2dac21-a791-4a11-993c-c0d1a85736fc}</Project>
+      <Name>Presentation.Module</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

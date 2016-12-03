@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections;
+using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows;
 using Hdd.Contract;
@@ -8,7 +9,7 @@ using Hdd.Presentation.Core;
 namespace Hdd.Module1
 {
    [Export(typeof(IModuleContract))]
-   public class Module1Module : IModuleContract
+   public class Module1Module : IModule1Contract
    {
       private readonly ILogger _logger;
       private readonly ResourceDictionary _resourceDictionary;
@@ -18,6 +19,18 @@ namespace Hdd.Module1
          _logger = new Logger.Logger();
          _resourceDictionary = ResourceDictionaryLoader.Load();
       }
+
+      public void Open()
+      {
+         _logger.Info(this, "Open");
+      }
+
+      public void Close()
+      {
+         _logger.Info(this, "Close");
+      }
+
+      public IDictionary ResourceDictionary => _resourceDictionary;
 
       public string Name => Assembly.GetAssembly(GetType()).GetName().Name;
 

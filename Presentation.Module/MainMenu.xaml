@@ -1,0 +1,23 @@
+﻿<Menu x:Class="Hdd.Presentation.Module.MainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Hdd.Presentation.Module"
+      mc:Ignorable="d" d:DataContext="{d:DesignInstance local:MainMenuViewModel}">
+    <Menu.DataContext>
+        <local:MainMenuViewModel />
+    </Menu.DataContext>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" IsMainMenu="True">
+            <MenuItem Header="File" ItemsSource="{Binding MenuModules, Mode=OneWay}">
+                <MenuItem.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="MenuItem.Header" Value="{Binding Name}" />
+                        <Setter Property="MenuItem.Command" Value="{Binding Command}" />
+                    </Style>
+                </MenuItem.ItemContainerStyle>
+            </MenuItem>
+        </Menu>
+    </DockPanel>
+</Menu>

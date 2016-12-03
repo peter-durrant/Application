@@ -4,29 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:application="clr-namespace:Hdd.Application"
-        xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Presentation.Core"
+        xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
+        xmlns:module="clr-namespace:Hdd.Presentation.Module;assembly=Hdd.Presentation.Module"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance application:MainWindowViewModel}">
     <Window.DataContext>
         <application:MainWindowViewModel />
     </Window.DataContext>
-    <Grid>
-        <ItemsControl ItemsSource="{Binding Path=Modules, Mode=OneWay}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <StackPanel>
-                            <core:NameValueControl NameText="{Binding Path=Value.Name, Mode=OneWay}"
-                                                   ValueText="{Binding Path=Value.Version, Mode=OneWay}" />
-                            <Label x:Uid="SayHello" Content="{Binding Path=Value.SayHello, Mode=OneWay}"
-                                   Foreground="Black" />
-                            <Button Content="{Binding Path=Value.Name, Mode=OneWay}"
-                                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.StartModuleCommand, Mode=OneWay}"
-                                    CommandParameter="{Binding Path=Value.Name, Mode=OneWay}" />
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
+    <StackPanel>
+        <module:MainMenu />
+        <Grid>
+            <ItemsControl ItemsSource="{Binding Path=Modules, Mode=OneWay}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <StackPanel>
+                                <core:NameValueControl NameText="{Binding Path=Value.Name, Mode=OneWay}"
+                                                       ValueText="{Binding Path=Value.Version, Mode=OneWay}" />
+                                <Label x:Uid="SayHello" Content="{Binding Path=Value.SayHello, Mode=OneWay}"
+                                       Foreground="Black" />
+                                <Button Content="{Binding Path=Value.Name, Mode=OneWay}"
+                                        Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.StartModuleCommand, Mode=OneWay}"
+                                        CommandParameter="{Binding Path=Value.Name, Mode=OneWay}" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </StackPanel>
 </Window>
