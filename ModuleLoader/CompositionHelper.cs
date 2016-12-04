@@ -34,7 +34,7 @@ namespace Hdd.ModuleLoader
             {
                var moduleName = Assembly.GetAssembly(module.Value.GetType()).GetName();
                _logger.Info(this,
-                  $"Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T).Namespace}.{typeof(T).Name})");
+                  $"{module.Value} - Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T).Namespace}.{typeof(T).Name})");
             }
          }
          catch (Exception e)
@@ -73,7 +73,7 @@ namespace Hdd.ModuleLoader
             {
                var moduleName = Assembly.GetAssembly(module.Value.GetType()).GetName();
                _logger.Info(this,
-                  $"Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T1).Namespace}.{typeof(T1).Name})");
+                  $"{module.Value} - Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T1).Namespace}.{typeof(T1).Name} and {typeof(T2).Namespace}.{typeof(T2).Name})");
             }
          }
          catch (Exception e)

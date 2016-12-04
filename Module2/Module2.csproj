@@ -42,6 +42,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IModule2Contract.cs" />
     <Compile Include="Module2Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

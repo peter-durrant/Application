@@ -14,7 +14,6 @@ namespace Hdd.Application
    {
       private readonly CompositionHelper<IModuleContract> _compositionHelper;
       private readonly ILogger _logger;
-      private readonly CompositionHelper<IModuleContract, IModuleLocationAttribute> _menuCompositionHelper;
       private ICommand _startModuleCommand;
 
       public MainWindowViewModel()
@@ -27,10 +26,7 @@ namespace Hdd.Application
          _compositionHelper = new CompositionHelper<IModuleContract>();
          _compositionHelper.AssembleModuleComponents();
 
-         // load menu modules
-         _logger.Info(this, "Load menus");
-         _menuCompositionHelper = new CompositionHelper<IModuleContract, IModuleLocationAttribute>();
-         _compositionHelper.AssembleModuleComponents();
+         MainMenuViewModel = new MainMenuViewModel(Modules);
       }
 
       public IEnumerable<Lazy<IModuleContract>> Modules => _compositionHelper.Modules;
@@ -47,5 +43,7 @@ namespace Hdd.Application
                });
          }
       }
+
+      public MainMenuViewModel MainMenuViewModel { get; private set; }
    }
 }

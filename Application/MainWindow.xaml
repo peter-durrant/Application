@@ -12,7 +12,7 @@
         <application:MainWindowViewModel />
     </Window.DataContext>
     <StackPanel>
-        <module:MainMenu />
+        <module:MainMenu DataContext="{Binding MainMenuViewModel, Mode=OneWay}" />
         <Grid>
             <ItemsControl ItemsSource="{Binding Path=Modules, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>

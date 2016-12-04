@@ -9,7 +9,7 @@ using Hdd.Presentation.Core;
 namespace Hdd.Module2
 {
    [Export(typeof(IModuleContract))]
-   public class Module2Module : IModuleContract
+   public class Module2Module : IModule2Contract
    {
       private readonly ILogger _logger;
       private readonly ResourceDictionary _resourceDictionary;
@@ -18,6 +18,16 @@ namespace Hdd.Module2
       {
          _logger = new Logger.Logger();
          _resourceDictionary = ResourceDictionaryLoader.Load();
+      }
+
+      public void Print()
+      {
+         _logger.Info(this, "Print");
+      }
+
+      public void Exit()
+      {
+         _logger.Info(this, "Exit");
       }
 
       public IDictionary ResourceDictionary => _resourceDictionary;
