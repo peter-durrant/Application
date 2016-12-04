@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
+using Hdd.Contract;
 using Hdd.Logger;
 
 namespace Hdd.ModuleLoader
@@ -10,7 +11,7 @@ namespace Hdd.ModuleLoader
 
    #region CompositionHelper<T>
 
-   public class CompositionHelper<T>
+   public class CompositionHelper<T> where T : IModuleConnector
    {
       private readonly ILogger _logger;
 
@@ -35,6 +36,7 @@ namespace Hdd.ModuleLoader
                var moduleName = Assembly.GetAssembly(module.Value.GetType()).GetName();
                _logger.Info(this,
                   $"{module.Value} - Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T).Namespace}.{typeof(T).Name})");
+               module.Value.Module = (IModuleContract) module.Value;
             }
          }
          catch (Exception e)
@@ -49,7 +51,7 @@ namespace Hdd.ModuleLoader
 
    #region CompositionHelper<T1, T2>
 
-   public class CompositionHelper<T1, T2>
+   public class CompositionHelper<T1, T2> where T1 : IModuleConnector
    {
       private readonly ILogger _logger;
 
@@ -59,22 +61,33 @@ namespace Hdd.ModuleLoader
       }
 
       [ImportMany]
+      private IEnumerable<Lazy<T1, T2>> ImportedModules { get; set; }
+
       public IEnumerable<Lazy<T1, T2>> Modules { get; set; }
 
-      public void AssembleModuleComponents()
+      public void AssembleModuleComponents(IEnumerable<Lazy<IModuleContract>> modules)
       {
          try
          {
-            var catalog = new DirectoryCatalog(@".", "*.dll");
-            var container = new CompositionContainer(catalog);
-            container.ComposeParts(this);
-
-            foreach (var module in Modules)
+            var moduleList = new List<Lazy<T1, T2>>();
+            foreach (var module in modules)
             {
-               var moduleName = Assembly.GetAssembly(module.Value.GetType()).GetName();
-               _logger.Info(this,
-                  $"{module.Value} - Loaded {moduleName.FullName} {moduleName.Version} ({typeof(T1).Namespace}.{typeof(T1).Name} and {typeof(T2).Namespace}.{typeof(T2).Name})");
+               var moduleName = module.Value.GetType().Assembly.GetName().Name;
+               var catalog = new DirectoryCatalog(@".", $"{moduleName}*.dll");
+               var container = new CompositionContainer(catalog);
+               container.ComposeParts(this);
+
+               foreach (var importedModule in ImportedModules)
+               {
+                  var importedModuleName = Assembly.GetAssembly(importedModule.Value.GetType()).GetName();
+                  _logger.Info(this,
+                     $"{importedModule.Value} - Loaded {importedModuleName.FullName} {importedModuleName.Version} ({typeof(T1).Namespace}.{typeof(T1).Name} and {typeof(T2).Namespace}.{typeof(T2).Name})");
+                  // for each module found, set it's Module reference to the core module
+                  importedModule.Value.Module = module.Value.Module;
+               }
+               moduleList.AddRange(ImportedModules);
             }
+            Modules = moduleList;
          }
          catch (Exception e)
          {

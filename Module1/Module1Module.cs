@@ -20,6 +20,8 @@ namespace Hdd.Module1
          _resourceDictionary = ResourceDictionaryLoader.Load();
       }
 
+      public IModuleContract Module { get; set; }
+
       public void Open()
       {
          _logger.Info(this, "Open");

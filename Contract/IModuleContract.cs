@@ -2,7 +2,7 @@
 
 namespace Hdd.Contract
 {
-   public interface IModuleContract
+   public interface IModuleContract : IModuleConnector
    {
       IDictionary ResourceDictionary { get; }
       string Name { get; }

@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IModuleConnector.cs" />
     <Compile Include="IModuleContract.cs" />
     <Compile Include="IFeature1Contract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

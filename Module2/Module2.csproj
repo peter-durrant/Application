@@ -55,6 +55,10 @@
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModuleLoader\ModuleLoader.csproj">
+      <Project>{2816C338-E177-413E-80E7-63382349ECCF}</Project>
+      <Name>ModuleLoader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presentation.Core\Presentation.Core.csproj">
       <Project>{63c25e57-a90e-42b7-9c18-d59c0e0379ce}</Project>
       <Name>Presentation.Core</Name>

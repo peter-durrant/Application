@@ -11,8 +11,8 @@ namespace Hdd.Application
    {
       public App()
       {
-         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("fr");
-         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("fr");
+         CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de");
+         CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de");
 
          var logger = new Logger.Logger();
          logger.Info(this, new string('-', 100));

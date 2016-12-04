@@ -22,32 +22,12 @@ namespace Hdd.Presentation.Module
          _logger.Info(this, "Load menus");
 
          _menuCompositionHelper = new CompositionHelper<IModuleCommand, IModuleLocationAttribute>();
-         _menuCompositionHelper.AssembleModuleComponents();
-
-         ConnectCommandToModule(modules.ToList());
+         _menuCompositionHelper.AssembleModuleComponents(modules);
       }
 
       public IEnumerable<IModuleCommand> MenuModules
       {
          get { return _menuCompositionHelper.Modules.Select(x => x.Value); }
-      }
-
-      // TODO is this a hack? The commands in Module<X>.Presentation need to refer to the implentation in Module<X>.
-      // TODO is there anyway to do this directly (or better)?
-      private void ConnectCommandToModule(IList<Lazy<IModuleContract>> modules)
-      {
-         foreach (var moduleCommand in MenuModules)
-         {
-            var presentationNamespace = moduleCommand.GetType().Namespace;
-            foreach (var module in modules)
-            {
-               if (presentationNamespace.StartsWith(module.Value.GetType().Namespace))
-               {
-                  moduleCommand.Module = module.Value;
-                  break;
-               }
-            }
-         }
       }
    }
 }

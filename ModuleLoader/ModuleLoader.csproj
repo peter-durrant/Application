@@ -39,6 +39,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contract\Contract.csproj">
+      <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
       <Name>Logger</Name>
