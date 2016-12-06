@@ -39,11 +39,6 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -54,6 +49,8 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainMenuViewModel.cs" />
+    <Compile Include="MenuGroup.cs" />
+    <Compile Include="ModuleLocationName.cs" />
     <Compile Include="ModuleLocationAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,10 +68,6 @@
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
       <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Module1\Module1.csproj">
-      <Project>{E0767419-02C9-4A84-A608-EC98872060F7}</Project>
-      <Name>Module1</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModuleLoader\ModuleLoader.csproj">
       <Project>{2816C338-E177-413E-80E7-63382349ECCF}</Project>

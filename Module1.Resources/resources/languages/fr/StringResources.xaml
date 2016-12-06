@@ -3,8 +3,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="Hello">Bonjour</system:String>
+    <!-- Module location-->
+    <system:String x:Key="ModuleLocationFile">Fichier</system:String>
+
+    <!-- Command names -->
     <system:String x:Key="OpenCommandName">Ouvert</system:String>
     <system:String x:Key="CloseCommandName">Fermer</system:String>
+
+    <!-- Other strings -->
+    <system:String x:Key="Hello">Bonjour</system:String>
 
 </ResourceDictionary>

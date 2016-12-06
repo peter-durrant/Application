@@ -1,11 +1,15 @@
 ﻿using System.Windows.Input;
 using Hdd.Contract;
-using Hdd.ModuleLoader;
 
 namespace Hdd.Presentation.Module
 {
    public interface IModuleCommand : IModuleConnector
    {
+      /// <summary>
+      /// Identifier of command (language neutral)
+      /// </summary>
+      string Id { get; }
+
       /// <summary>
       ///    Is true if the command can be run.
       /// </summary>

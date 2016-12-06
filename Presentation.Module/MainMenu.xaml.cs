@@ -5,7 +5,7 @@ namespace Hdd.Presentation.Module
    /// <summary>
    ///    Interaction logic for MainMenu.xaml
    /// </summary>
-   public partial class MainMenu : Menu
+   public partial class MainMenu : UserControl
    {
       public MainMenu()
       {

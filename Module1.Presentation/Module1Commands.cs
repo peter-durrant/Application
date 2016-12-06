@@ -19,6 +19,8 @@ namespace Hdd.Module1.Presentation
 
       public IModuleContract Module { get; set; }
 
+      public string Id => GetType().Name;
+
       public bool Active => true;
 
       public string Name => (string) Module?.ResourceDictionary["OpenCommandName"];
@@ -36,6 +38,8 @@ namespace Hdd.Module1.Presentation
       }
 
       public IModuleContract Module { get; set; }
+
+      public string Id => GetType().Name;
 
       public bool Active => true;
 
