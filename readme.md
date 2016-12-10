@@ -113,6 +113,10 @@ The implementation as it stands is derived from [CQRSlite](https://github.com/ga
 Note that the CQRSlite source code has been added to the CqrsEventSourcing project.
 This should be replaced in future by a reference to the [CQRSlite NuGet package](https://www.nuget.org/packages/cqrslite).
 
+### Documentation
+
+CQRSlite is documented by Sacha Barber on Code Project [CQRS : A Cross Examination Of How It Works](https://www.codeproject.com/articles/991648/cqrs-a-cross-examination-of-how-it-works).
+
 ### Event Store
 
 The in-memory event store provided by CQRSlite is not used here, but instead a file-based event store is used with Events serialised in JSON. See [FileEventStore.cs](./CqrsEventSourcing/FileEventStore.cs).
