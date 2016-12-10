@@ -18,6 +18,7 @@ namespace Hdd.Module1
       {
          _logger = new Logger.Logger();
          _resourceDictionary = ResourceDictionaryLoader.Load();
+         var builder = new Builder();
       }
 
       public IModuleContract Module { get; set; }

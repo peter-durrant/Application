@@ -104,3 +104,36 @@ Each command identified as a menu item (or module command) implements `IModuleCo
 [Export(typeof(IModuleCommand))]
 public class MyCommand : IModuleCommand
 ```
+
+# Event Sourcing and CQRS
+
+## Implementation
+
+The implementation as it stands is derived from [CQRSlite](https://github.com/gautema/CQRSlite). The only realy difference is that the code is temporarily in the `Hdd.CqrsEventSourcing` namespace.
+Note that the CQRSlite source code has been added to the CqrsEventSourcing project.
+This should be replaced in future by a reference to the [CQRSlite NuGet package](https://www.nuget.org/packages/cqrslite).
+
+### Event Store
+
+The in-memory event store provided by CQRSlite is not used here, but instead a file-based event store is used with Events serialised in JSON. See [FileEventStore.cs](./CqrsEventSourcing/FileEventStore.cs).
+
+### JSON Serialisation
+
+JSON serialisation is done using `JavaScriptSerializer`. By using the `SimpleTypeResolver` the type information is serialised with the data.
+
+```c#
+_javaScriptSerializer = new JavaScriptSerializer(new SimpleTypeResolver());
+```
+
+This is of use during deserialisation where only the underlying interface `IEvent` is specified.
+
+```c#
+var @event = _javaScriptSerializer.Deserialize<IEvent>(json);
+```
+
+This currently means that the JSON is dominated by the type information.
+
+```
+{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"a5788a21-393b-4e3c-bf55-e3e07ed74bb2","Version":1,"TimeStamp":"\/Date(1481406875929)\/"}
+{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"597696ba-20eb-4af7-a364-e0c67b72802f","Version":1,"TimeStamp":"\/Date(1481406908079)\/"}
+```
