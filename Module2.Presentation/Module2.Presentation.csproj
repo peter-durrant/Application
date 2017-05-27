@@ -52,6 +52,10 @@
       <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Module2.Resources\Module2.Resources.csproj">
+      <Project>{3d2d0bd3-cfec-43ba-95fb-b2df02381529}</Project>
+      <Name>Module2.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Module2\Module2.csproj">
       <Project>{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}</Project>
       <Name>Module2</Name>

@@ -42,16 +42,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder.cs" />
     <Compile Include="IModule1Contract.cs" />
     <Compile Include="Module1Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CqrsEventSourcing\CqrsEventSourcing.csproj">
-      <Project>{281089a1-3be0-43c5-b805-1a0c552e7b88}</Project>
-      <Name>CqrsEventSourcing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
       <Name>Logger</Name>
@@ -60,9 +55,9 @@
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Module1.Domain\Module1.Domain.csproj">
-      <Project>{802EDCDD-8458-4376-A4E8-B702942A581D}</Project>
-      <Name>Module1.Domain</Name>
+    <ProjectReference Include="..\Module1.Resources\Module1.Resources.csproj">
+      <Project>{40b6bb8d-55c8-4448-8c0e-d96609b8a2e8}</Project>
+      <Name>Module1.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Presentation.Core\Presentation.Core.csproj">
       <Project>{63c25e57-a90e-42b7-9c18-d59c0e0379ce}</Project>
