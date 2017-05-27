@@ -62,7 +62,66 @@ Note: to aid development, Visual Studio provides `propdp` as a shortcut to gener
 
 ## Localisation
 
-### UI Localisation
+Localisation is done using .resx files.
+
+In all relevant projects, add to AssemblyInfo (setting default language):
+```c#
+using System.Resources;
+[assembly: NeutralResourcesLanguage("en", UltimateResourceFallbackLocation.Satellite)]
+```
+
+Create the default language .resx and then translate into language-specific .resx files (e.g. .de.resx, .fr.resx etc.).
+
+## UI
+
+### Main Menu / Module Commands
+
+The main menu is constructed taking into account each loaded module and features language localisation.
+
+Each command identified as a menu item (or module command) implements `IModuleCommand` and has the `ModuleLocationAttribute`.
+
+```c#
+[ModuleLocation("File")]
+[Export(typeof(IModuleCommand))]
+public class MyCommand : IModuleCommand
+```
+
+# Future Work
+
+## Event Sourcing and CQRS
+
+Consider using the [CQRSlite NuGet package](https://www.nuget.org/packages/cqrslite).
+
+CQRSlite is documented by Sacha Barber on Code Project [CQRS : A Cross Examination Of How It Works](https://www.codeproject.com/articles/991648/cqrs-a-cross-examination-of-how-it-works).
+
+### Event Store
+
+A file-based event store could be used with Events serialised in JSON.
+
+JSON serialisation could be done using `JavaScriptSerializer`. By using the `SimpleTypeResolver` the type information is serialised with the data.
+
+```c#
+_javaScriptSerializer = new JavaScriptSerializer(new SimpleTypeResolver());
+```
+
+This is of use during deserialisation where only the underlying interface `IEvent` is specified.
+
+```c#
+var @event = _javaScriptSerializer.Deserialize<IEvent>(json);
+```
+
+This currently means that the JSON is dominated by the type information.
+
+```
+{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"a5788a21-393b-4e3c-bf55-e3e07ed74bb2","Version":1,"TimeStamp":"\/Date(1481406875929)\/"}
+{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"597696ba-20eb-4af7-a364-e0c67b72802f","Version":1,"TimeStamp":"\/Date(1481406908079)\/"}
+```
+
+# Alternatives
+
+## UI Localisation
+
+I opted to go for .resx resources. WPF also supports BAML.
 
 [Visual Locbaml](http://visuallocbaml.com/) is an free open-source tool to assist WPF application localisation.
 
@@ -85,59 +144,8 @@ using System.Resources;
 
 Rebuild the project. This will add resources to a en-US folder in the build folder. Use Visual Locbaml to create new resources.
 
-### String Resources
+## String Resources
 
-Modules are built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/\<language code>/StringResources.xaml.
+Modules would then be built with their own string resources for localisation. `ResourceDictionary` resources are created for each supported language in the /resources/languages/\<language code>/StringResources.xaml.
 
-A `ResourceDictionary` can loaded using the `ResourceDictionaryLoader`. See [Module1Module](./Module1/Module1Module.cs) for an example of use.
-
-## UI
-
-### Main Menu / Module Commands
-
-The main menu is constructed taking into account each loaded module and features language localisation.
-
-Each command identified as a menu item (or module command) implements `IModuleCommand` and has the `ModuleLocationAttribute`.
-
-```c#
-[ModuleLocation("File")]
-[Export(typeof(IModuleCommand))]
-public class MyCommand : IModuleCommand
-```
-
-# Event Sourcing and CQRS
-
-## Implementation
-
-The implementation as it stands is derived from [CQRSlite](https://github.com/gautema/CQRSlite). The only realy difference is that the code is temporarily in the `Hdd.CqrsEventSourcing` namespace.
-Note that the CQRSlite source code has been added to the CqrsEventSourcing project.
-This should be replaced in future by a reference to the [CQRSlite NuGet package](https://www.nuget.org/packages/cqrslite).
-
-### Documentation
-
-CQRSlite is documented by Sacha Barber on Code Project [CQRS : A Cross Examination Of How It Works](https://www.codeproject.com/articles/991648/cqrs-a-cross-examination-of-how-it-works).
-
-### Event Store
-
-The in-memory event store provided by CQRSlite is not used here, but instead a file-based event store is used with Events serialised in JSON. See [FileEventStore.cs](./CqrsEventSourcing/FileEventStore.cs).
-
-### JSON Serialisation
-
-JSON serialisation is done using `JavaScriptSerializer`. By using the `SimpleTypeResolver` the type information is serialised with the data.
-
-```c#
-_javaScriptSerializer = new JavaScriptSerializer(new SimpleTypeResolver());
-```
-
-This is of use during deserialisation where only the underlying interface `IEvent` is specified.
-
-```c#
-var @event = _javaScriptSerializer.Deserialize<IEvent>(json);
-```
-
-This currently means that the JSON is dominated by the type information.
-
-```
-{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"a5788a21-393b-4e3c-bf55-e3e07ed74bb2","Version":1,"TimeStamp":"\/Date(1481406875929)\/"}
-{"__type":"Hdd.Module1.Domain.ReadModel.Events.ItemCreatedEvent, Hdd.Module1.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"Item 1","Id":"597696ba-20eb-4af7-a364-e0c67b72802f","Version":1,"TimeStamp":"\/Date(1481406908079)\/"}
-```
+A `ResourceDictionary` could then be loaded using the `ResourceDictionaryLoader` (in history of repository - see [Module1Module](./Module1/Module1Module.cs) for an example of use).
