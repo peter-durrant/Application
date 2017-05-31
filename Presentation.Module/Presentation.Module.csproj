@@ -43,15 +43,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IModuleCommand.cs" />
-    <Compile Include="IModuleLocationAttribute.cs" />
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainMenuViewModel.cs" />
-    <Compile Include="MenuGroup.cs" />
-    <Compile Include="ModuleLocationName.cs" />
-    <Compile Include="ModuleLocationAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

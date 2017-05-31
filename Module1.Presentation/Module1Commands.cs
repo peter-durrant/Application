@@ -2,11 +2,10 @@
 using System.Windows.Input;
 using Hdd.Contract;
 using Hdd.Presentation.Core;
-using Hdd.Presentation.Module;
 
 namespace Hdd.Module1.Presentation
 {
-    [ModuleLocation("File")]
+    [ModuleLocation("File", 1)]
     [Export(typeof(IModuleCommand))]
     public class Open : IModuleCommand
     {
@@ -26,7 +25,7 @@ namespace Hdd.Module1.Presentation
         public string Name => Resources.Module1.OpenCommandName;
     }
 
-    [ModuleLocation("File")]
+    [ModuleLocation("File", 10)]
     [Export(typeof(IModuleCommand))]
     public class Close : IModuleCommand
     {

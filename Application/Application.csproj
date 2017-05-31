@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml">
@@ -114,6 +115,10 @@
     <ProjectReference Include="..\Presentation.Module\Presentation.Module.csproj">
       <Project>{9D2DAC21-A791-4A11-993C-C0D1A85736FC}</Project>
       <Name>Presentation.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{23fb320b-6a33-43ae-a7ba-e203dd864df1}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

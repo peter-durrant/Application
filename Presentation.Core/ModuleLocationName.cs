@@ -1,6 +1,6 @@
 ﻿using Hdd.Contract;
 
-namespace Hdd.Presentation.Module
+namespace Hdd.Presentation.Core
 {
     public class ModuleLocationName
     {
