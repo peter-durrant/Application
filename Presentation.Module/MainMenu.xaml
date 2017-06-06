@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Hdd.Presentation.Module"
-             mc:Ignorable="d" d:DataContext="{d:DesignInstance local:MainMenuViewModel}"
+             xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance core:MainMenuViewModel}"
              DockPanel.Dock="Top">
     <DockPanel>
         <Menu IsMainMenu="True" ItemsSource="{Binding MenuGroups.Groups, Mode=OneWay}">
