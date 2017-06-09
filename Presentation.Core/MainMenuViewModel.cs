@@ -28,8 +28,7 @@ namespace Hdd.Presentation.Core
             }
         }
 
-        private IEnumerable<Lazy<IModuleCommand, IMenuGroupItemAttribute>> MenuModuleCommands
-            => _menuCompositionHelper.Modules;
+        private IEnumerable<Lazy<IModuleCommand, IMenuGroupItemAttribute>> MenuModuleCommands => _menuCompositionHelper.Modules;
 
         public Menu.Core.Menu Menu { get; }
     }

@@ -24,18 +24,20 @@ namespace Application.Test
         [Test]
         public void GivenTwoModulesAvailable_WhenModulesAreLoaded_ThenMenusAreAvailable()
         {
-            Assert.AreEqual(1, _uut.MainMenuViewModel.MenuGroups.Groups.Count);
-            var menuGroups = _uut.MainMenuViewModel.MenuGroups.Groups.First();
-            Assert.AreEqual("File", menuGroups.Value.Name);
-            Assert.AreEqual(int.MinValue, menuGroups.Key.Item1);
-            Assert.AreEqual("File", menuGroups.Key.Item2);
-            Assert.AreEqual("File", menuGroups.Key.Item2);
-            Assert.AreEqual(4, menuGroups.Value.ChildItems.Count);
-            var menuItems = menuGroups.Value.ChildItems.ToList();
-            Assert.AreEqual("Open", menuItems[0].Name);
-            Assert.AreEqual("Close", menuItems[1].Name);
-            Assert.AreEqual("Print", menuItems[2].Name);
-            Assert.AreEqual("Exit", menuItems[3].Name);
+            var rootMenu = _uut.MainMenuViewModel.Menu.RootMenu;
+            var rootMenuItems = rootMenu.Items.ToList();
+            Assert.AreEqual(2, rootMenuItems.Count);
+            Assert.AreEqual("File", rootMenuItems[0].Name);
+            Assert.AreEqual("Help", rootMenuItems[1].Name);
+            var fileMenu = rootMenuItems[0].Items.ToList();
+            var helpMenu = rootMenuItems[1].Items.ToList();
+            Assert.AreEqual("Open", fileMenu[0].Name);
+            Assert.AreEqual("Close", fileMenu[1].Name);
+            Assert.AreEqual("Print", fileMenu[2].Name);
+            Assert.AreEqual("Exit", fileMenu[3].Name);
+            Assert.AreEqual("About", helpMenu[0].Name);
+            Assert.AreEqual("SendFeedback", helpMenu[1].Name);
+            Assert.AreEqual("Feedback", helpMenu[1].Group);
         }
     }
 }
