@@ -7,7 +7,7 @@ namespace Menu.Core
 {
     public class MenuItem : IMenuCommand
     {
-        private readonly List<MenuItem> _subMenuItems;
+        private List<MenuItem> _subMenuItems;
 
         internal MenuItem() : this("root")
         {
@@ -41,11 +41,17 @@ namespace Menu.Core
 
 
         public IEnumerable<MenuItem> Items => _subMenuItems;
+        public bool Separator { get; set; }
 
         public string Id { get; set; }
         public bool Active { get; set; }
         public string Name { get; set; }
         public ICommand Command { get; set; }
+
+        private static MenuItem CreateSeparator()
+        {
+            return new MenuItem {Separator = true};
+        }
 
         internal MenuItem AddOrGetMenuItem(string name)
         {
@@ -75,6 +81,28 @@ namespace Menu.Core
                     $"Cannot add items with different precedence {item.Precedence}/{item.GroupPrecedence} to group precedence {menuItems.First().Precedence}/{menuItems.First().GroupPrecedence}");
             }
             return _subMenuItems.Single(x => x.Name == item.Name);
+        }
+
+        public void AddSeparator()
+        {
+            var subMenuItems = new List<MenuItem>();
+            var first = true;
+            string group = null;
+            foreach (var item in _subMenuItems)
+            {
+                if (first)
+                {
+                    first = false;
+                    group = item.Group;
+                }
+                else if (item.Group != group)
+                {
+                    subMenuItems.Add(CreateSeparator());
+                    group = item.Group;
+                }
+                subMenuItems.Add(item);
+            }
+            _subMenuItems = subMenuItems;
         }
     }
 }

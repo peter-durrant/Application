@@ -25,7 +25,7 @@ namespace Hdd.Module2.Presentation
         public string Name => Resources.Module2.PrintCommandName;
     }
 
-    [MenuGroupItem("File", "Exit|9999")]
+    [MenuGroupItem("File", "Exit|9999|Exit")]
     [Export(typeof(IModuleCommand))]
     public class Exit : IModuleCommand
     {

@@ -46,6 +46,7 @@
     <Compile Include="IModuleCommand.cs" />
     <Compile Include="IMenuGroupItemAttribute.cs" />
     <Compile Include="MainMenuViewModel.cs" />
+    <Compile Include="MenuBuilder.cs" />
     <Compile Include="MenuGroupItemAttribute.cs" />
     <Compile Include="NameValueControl.xaml.cs">
       <DependentUpon>NameValueControl.xaml</DependentUpon>

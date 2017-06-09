@@ -6,6 +6,11 @@
              xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
              mc:Ignorable="d" d:DataContext="{d:DesignInstance core:MainMenuViewModel}"
              DockPanel.Dock="Top">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="MenuSeparatorTemplate">
+            <Separator />
+        </ControlTemplate>
+    </UserControl.Resources>
     <DockPanel>
         <Menu IsMainMenu="True" ItemsSource="{Binding Menu.RootMenu.Items, Mode=OneWay}">
             <Menu.ItemTemplate>
@@ -14,6 +19,12 @@
                         <Style TargetType="MenuItem">
                             <Setter Property="Command" Value="{Binding Command}" />
                             <Setter Property="IsEnabled" Value="{Binding Active}" />
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Separator}" Value="True">
+                                    <Setter Property="Template" Value="{StaticResource MenuSeparatorTemplate}" />
+                                </DataTrigger>
+                            </Style.Triggers>
                         </Style>
                     </HierarchicalDataTemplate.ItemContainerStyle>
                     <TextBlock Text="{Binding Path=Name}" />

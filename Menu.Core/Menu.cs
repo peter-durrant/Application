@@ -116,6 +116,30 @@ namespace Menu.Core
             menuItem.Active = menuCommand.Active;
         }
 
+        public void AddSeparators()
+        {
+            AddSeparatorsToChildren(RootMenu);
+        }
+
+        private static void AddSeparatorsToChildren(MenuItem parent)
+        {
+            var first = true;
+            var group = string.Empty;
+            foreach (var item in parent.Items)
+            {
+                AddSeparatorsToChildren(item);
+                if (first)
+                {
+                    first = false;
+                    group = item.Group;
+                }
+                else if (group != item.Group)
+                {
+                    parent.AddSeparator();
+                }
+            }
+        }
+
 
         private struct GroupPrecedence
         {
@@ -125,7 +149,7 @@ namespace Menu.Core
                 Precedence = precedence;
             }
 
-            public string Name { get; }
+            private string Name { get; }
             public int Precedence { get; }
         }
     }
