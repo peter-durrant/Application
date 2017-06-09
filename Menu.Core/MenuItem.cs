@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Menu.Core
 {
-    public class MenuItem
+    public class MenuItem : IMenuCommand
     {
         private readonly List<MenuItem> _subMenuItems;
 
@@ -34,12 +35,17 @@ namespace Menu.Core
             _subMenuItems = new List<MenuItem>();
         }
 
-        public string Name { get; }
         public int Precedence { get; }
         public string Group { get; }
         public int GroupPrecedence { get; }
 
-        internal IEnumerable<MenuItem> Items => _subMenuItems;
+
+        public IEnumerable<MenuItem> Items => _subMenuItems;
+
+        public string Id { get; set; }
+        public bool Active { get; set; }
+        public string Name { get; set; }
+        public ICommand Command { get; set; }
 
         internal MenuItem AddOrGetMenuItem(string name)
         {

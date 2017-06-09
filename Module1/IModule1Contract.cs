@@ -6,5 +6,7 @@ namespace Hdd.Module1
    {
       void Open();
       void Close();
+      void About();
+       void SendFeedback();
    }
 }

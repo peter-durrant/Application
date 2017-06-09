@@ -15,53 +15,57 @@ namespace Menu.Core
     /// </summary>
     public class Menu
     {
-        private readonly Dictionary<string, int> _groupPrecedence;
-        private readonly MenuItem _menuRoot;
-
         public Menu()
         {
-            _menuRoot = new MenuItem();
-            _groupPrecedence = new Dictionary<string, int>();
+            RootMenu = new MenuItem();
         }
 
-        public MenuItem AddOrGetMenuItem(IReadOnlyList<string> path)
+        public MenuItem RootMenu { get; }
+
+        public MenuItem AddOrGetMenuItem(IReadOnlyList<string> path, IMenuCommand menuCommand)
         {
             if (path.Count == 0)
             {
                 throw new InvalidOperationException("Menu item path undefined");
             }
 
-            var menuItem = _menuRoot;
+            var menuItem = RootMenu;
             foreach (var element in path)
             {
                 menuItem = menuItem.AddOrGetMenuItem(element);
             }
+            // last item added is a leaf, so add command and other properties
+            UpdateMenuItemProperties(menuCommand, menuItem);
             return menuItem;
         }
 
-        public MenuItem AddOrGetMenuItem(IReadOnlyList<MenuGroupItem> path)
+        public MenuItem AddOrGetMenuItem(IReadOnlyList<MenuGroupItem> path, IMenuCommand menuCommand)
         {
             if (path.Count == 0)
             {
                 throw new InvalidOperationException("Menu item path undefined");
             }
 
-            var menuItem = _menuRoot;
+            var menuItem = RootMenu;
             foreach (var element in path)
             {
                 menuItem = menuItem.AddOrGetMenuItem(element);
             }
+            // last item added is a leaf, so add command
+            UpdateMenuItemProperties(menuCommand, menuItem);
             return menuItem;
         }
 
-        public static MenuItem AddOrGetMenuItem(MenuItem parent, MenuGroupItem item)
+        public static MenuItem AddOrGetMenuItem(MenuItem parent, MenuGroupItem item, IMenuCommand menuCommand)
         {
-            return parent.AddOrGetMenuItem(item);
+            var menuItem = parent.AddOrGetMenuItem(item);
+            UpdateMenuItemProperties(menuCommand, menuItem);
+            return menuItem;
         }
 
         public override string ToString()
         {
-            return WriteMenu(_menuRoot);
+            return WriteMenu(RootMenu);
         }
 
         private static string WriteMenu(MenuItem root, int indent = 0)
@@ -105,6 +109,13 @@ namespace Menu.Core
 
             return menu;
         }
+
+        private static void UpdateMenuItemProperties(IMenuCommand menuCommand, MenuItem menuItem)
+        {
+            menuItem.Command = menuCommand.Command;
+            menuItem.Active = menuCommand.Active;
+        }
+
 
         private struct GroupPrecedence
         {

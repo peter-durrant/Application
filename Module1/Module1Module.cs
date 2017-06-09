@@ -27,6 +27,16 @@ namespace Hdd.Module1
             _logger.Info(this, "Close");
         }
 
+        public void About()
+        {
+            _logger.Info(this, "About");
+        }
+
+        public void SendFeedback()
+        {
+            _logger.Info(this, "SendFeedback");
+        }
+
         public string Name => Assembly.GetAssembly(GetType()).GetName().Name;
 
         public string Version => Assembly.GetAssembly(typeof(Module1Module)).GetName().Version.ToString();

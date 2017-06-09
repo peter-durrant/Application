@@ -44,12 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModuleCommand.cs" />
-    <Compile Include="IModuleLocationAttribute.cs" />
-    <Compile Include="MainMenuLocations.cs" />
+    <Compile Include="IMenuGroupItemAttribute.cs" />
     <Compile Include="MainMenuViewModel.cs" />
-    <Compile Include="MenuGroup.cs" />
-    <Compile Include="ModuleLocationAttribute.cs" />
-    <Compile Include="ModuleLocationName.cs" />
+    <Compile Include="MenuGroupItemAttribute.cs" />
     <Compile Include="NameValueControl.xaml.cs">
       <DependentUpon>NameValueControl.xaml</DependentUpon>
     </Compile>
@@ -72,6 +69,10 @@
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{AEEB27B4-3920-4D35-948A-B28AC65856C8}</Project>
       <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Menu.Core\Menu.Core.csproj">
+      <Project>{0bb50c79-8b66-4332-a848-5bfaba326608}</Project>
+      <Name>Menu.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModuleLoader\ModuleLoader.csproj">
       <Project>{2816C338-E177-413E-80E7-63382349ECCF}</Project>

@@ -5,7 +5,7 @@ using Hdd.Presentation.Core;
 
 namespace Hdd.Module2.Presentation
 {
-    [ModuleLocation("File", 5)]
+    [MenuGroupItem("File", "Print|5")]
     [Export(typeof(IModuleCommand))]
     public class Print : IModuleCommand
     {
@@ -25,7 +25,7 @@ namespace Hdd.Module2.Presentation
         public string Name => Resources.Module2.PrintCommandName;
     }
 
-    [ModuleLocation("File", int.MaxValue)]
+    [MenuGroupItem("File", "Exit|9999")]
     [Export(typeof(IModuleCommand))]
     public class Exit : IModuleCommand
     {

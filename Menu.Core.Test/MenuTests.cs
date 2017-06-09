@@ -1,4 +1,5 @@
 ﻿using System;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Menu.Core.Test
@@ -6,6 +7,8 @@ namespace Menu.Core.Test
     [TestFixture]
     public class MenuTests
     {
+        private readonly IMenuCommand _menuCommand = Substitute.For<IMenuCommand>();
+
         [Test]
         public void GivenANewMenu_WhenWrittenOut_ThenWritesCorrectMenu()
         {
@@ -20,10 +23,10 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            menu.AddOrGetMenuItem(new[] {"File"});
-            menu.AddOrGetMenuItem(new[] {"Edit"});
-            menu.AddOrGetMenuItem(new[] {"View"});
-            menu.AddOrGetMenuItem(new[] {"Help"});
+            menu.AddOrGetMenuItem(new[] {"File"}, _menuCommand);
+            menu.AddOrGetMenuItem(new[] {"Edit"}, _menuCommand);
+            menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            menu.AddOrGetMenuItem(new[] {"Help"}, _menuCommand);
 
             Assert.AreEqual("File\nEdit\nView\nHelp\n", menu.ToString());
             Console.WriteLine(menu);
@@ -34,10 +37,10 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            var fileItem = menu.AddOrGetMenuItem(new[] {"File"});
-            var editItem = menu.AddOrGetMenuItem(new[] {"Edit"});
-            var viewItem = menu.AddOrGetMenuItem(new[] {"View"});
-            var helpItem = menu.AddOrGetMenuItem(new[] {"Help"});
+            var fileItem = menu.AddOrGetMenuItem(new[] {"File"}, _menuCommand);
+            var editItem = menu.AddOrGetMenuItem(new[] {"Edit"}, _menuCommand);
+            var viewItem = menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            var helpItem = menu.AddOrGetMenuItem(new[] {"Help"}, _menuCommand);
 
             Assert.AreEqual("File", fileItem.Name);
             Assert.AreEqual("Edit", editItem.Name);
@@ -50,10 +53,10 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            var openItem = menu.AddOrGetMenuItem(new[] {"File", "Open"});
-            var copyItem = menu.AddOrGetMenuItem(new[] {"Edit", "Copy"});
-            var viewItem = menu.AddOrGetMenuItem(new[] {"View"});
-            var aboutItem = menu.AddOrGetMenuItem(new[] {"Help", "About"});
+            var openItem = menu.AddOrGetMenuItem(new[] {"File", "Open"}, _menuCommand);
+            var copyItem = menu.AddOrGetMenuItem(new[] {"Edit", "Copy"}, _menuCommand);
+            var viewItem = menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            var aboutItem = menu.AddOrGetMenuItem(new[] {"Help", "About"}, _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -70,16 +73,16 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "FileNew")});
-            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", "EditGoto")});
-            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", "EditCopyAndPaste")});
-            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", "EditCopyAndPaste")});
-            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", "EditCopyAndPaste")});
-            var viewItem = menu.AddOrGetMenuItem(new[] {"View"});
-            var aboutItem = menu.AddOrGetMenuItem(new[] {"Help", "About"});
-            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help"), new MenuGroupItem("Send Feedback", "HelpFeedback")});
-            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help"), new MenuGroupItem("Samples", "HelpSamples")});
-            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"));
+            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "FileNew")}, _menuCommand);
+            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", "EditGoto")}, _menuCommand);
+            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", "EditCopyAndPaste")}, _menuCommand);
+            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", "EditCopyAndPaste")}, _menuCommand);
+            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", "EditCopyAndPaste")}, _menuCommand);
+            var viewItem = menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            var aboutItem = menu.AddOrGetMenuItem(new[] {"Help", "About"}, _menuCommand);
+            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help"), new MenuGroupItem("Send Feedback", "HelpFeedback")}, _menuCommand);
+            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help"), new MenuGroupItem("Samples", "HelpSamples")}, _menuCommand);
+            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"), _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -103,16 +106,16 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", 1, "FileNew")});
-            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", 5, "EditGoto")});
-            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", 2, "EditCopyAndPaste")});
-            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", 1, "EditCopyAndPaste")});
-            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", 3, "EditCopyAndPaste")});
-            var viewItem = menu.AddOrGetMenuItem(new[] {"View"});
-            var aboutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("About")});
-            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Send Feedback", "HelpFeedback")});
-            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Samples", "HelpSamples")});
-            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"));
+            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", 1, "FileNew")}, _menuCommand);
+            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", 5, "EditGoto")}, _menuCommand);
+            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", 2, "EditCopyAndPaste")}, _menuCommand);
+            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", 1, "EditCopyAndPaste")}, _menuCommand);
+            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", 3, "EditCopyAndPaste")}, _menuCommand);
+            var viewItem = menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            var aboutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("About")}, _menuCommand);
+            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Send Feedback", "HelpFeedback")}, _menuCommand);
+            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Samples", "HelpSamples")}, _menuCommand);
+            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"), _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -136,16 +139,16 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 3), new MenuGroupItem("Open", 1, "FileNew")});
-            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", 5, "EditGoto", 5)});
-            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", 2, "EditCopyAndPaste", 1)});
-            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", 1, "EditCopyAndPaste", 1)});
-            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", 3, "EditCopyAndPaste", 1)});
-            var viewItem = menu.AddOrGetMenuItem(new[] {"View"});
-            var aboutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("About")});
-            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Send Feedback", "HelpFeedback")});
-            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Samples", "HelpSamples")});
-            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"));
+            var openItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 3), new MenuGroupItem("Open", 1, "FileNew")}, _menuCommand);
+            var gotoItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Goto", 5, "EditGoto", 5)}, _menuCommand);
+            var copyItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Copy", 2, "EditCopyAndPaste", 1)}, _menuCommand);
+            var cutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Cut", 1, "EditCopyAndPaste", 1)}, _menuCommand);
+            var pasteItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Edit"), new MenuGroupItem("Paste", 3, "EditCopyAndPaste", 1)}, _menuCommand);
+            var viewItem = menu.AddOrGetMenuItem(new[] {"View"}, _menuCommand);
+            var aboutItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("About")}, _menuCommand);
+            var feedbackItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Send Feedback", "HelpFeedback")}, _menuCommand);
+            var samplesItem = menu.AddOrGetMenuItem(new[] {new MenuGroupItem("Help", 20), new MenuGroupItem("Samples", "HelpSamples")}, _menuCommand);
+            var reportAProblemItem = Menu.AddOrGetMenuItem(feedbackItem, new MenuGroupItem("Report a Problem...", "HelpFeedbackReportAProblem"), _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -169,8 +172,8 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open")});
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open")});
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open")}, _menuCommand);
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open")}, _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -182,8 +185,8 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", 2)});
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Close", 1)});
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", 2)}, _menuCommand);
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Close", 1)}, _menuCommand);
 
             Console.WriteLine(menu);
 
@@ -195,7 +198,7 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new string[] {}));
+            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new string[] {}, _menuCommand));
         }
 
         [Test]
@@ -203,34 +206,34 @@ namespace Menu.Core.Test
         {
             var menu = new Menu();
 
-            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new MenuGroupItem[] {}));
+            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new MenuGroupItem[] {}, _menuCommand));
         }
 
         [Test]
         public void GivenMenu_WhenAddingItemsWithDifferentGroupPrecedence_ThenThrowsException()
         {
             var menu = new Menu();
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 3), new MenuGroupItem("Open")});
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 3), new MenuGroupItem("Open")}, _menuCommand);
 
-            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Close")}));
+            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Close")}, _menuCommand));
         }
 
         [Test]
         public void GivenMenu_WhenAddingItemsWithDifferentGroup_ThenThrowsException()
         {
             var menu = new Menu();
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "OpenGroup")});
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "OpenGroup")}, _menuCommand);
 
-            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "AnotherGroup")}));
+            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File"), new MenuGroupItem("Open", "AnotherGroup")}, _menuCommand));
         }
 
         [Test]
         public void GivenMenu_WhenAddingItemsWithDifferentParentGroupPrecedence_ThenThrowsException()
         {
             var menu = new Menu();
-            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 1), new MenuGroupItem("Open")});
+            menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 1), new MenuGroupItem("Open")}, _menuCommand);
 
-            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 2), new MenuGroupItem("Close")}));
+            Assert.Throws(typeof(InvalidOperationException), () => menu.AddOrGetMenuItem(new[] {new MenuGroupItem("File", 2), new MenuGroupItem("Close")}, _menuCommand));
         }
     }
 }

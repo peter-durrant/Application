@@ -5,7 +5,7 @@ using Hdd.Presentation.Core;
 
 namespace Hdd.Module1.Presentation
 {
-    [ModuleLocation("File", 1)]
+    [MenuGroupItem("File", "Open|1")]
     [Export(typeof(IModuleCommand))]
     public class Open : IModuleCommand
     {
@@ -25,7 +25,7 @@ namespace Hdd.Module1.Presentation
         public string Name => Resources.Module1.OpenCommandName;
     }
 
-    [ModuleLocation("File", 10)]
+    [MenuGroupItem("File", "Close|10")]
     [Export(typeof(IModuleCommand))]
     public class Close : IModuleCommand
     {
@@ -34,6 +34,46 @@ namespace Hdd.Module1.Presentation
         public ICommand Command
         {
             get { return _command = _command ?? new RelayCommand(x => { (Module as IModule1Contract).Close(); }); }
+        }
+
+        public IModuleContract Module { get; set; }
+
+        public string Id => GetType().Name;
+
+        public bool Active => false;
+
+        public string Name => Resources.Module1.CloseCommandName;
+    }
+
+    [MenuGroupItem("Help", "About")]
+    [Export(typeof(IModuleCommand))]
+    public class About : IModuleCommand
+    {
+        private ICommand _command;
+
+        public ICommand Command
+        {
+            get { return _command = _command ?? new RelayCommand(x => { (Module as IModule1Contract).About(); }); }
+        }
+
+        public IModuleContract Module { get; set; }
+
+        public string Id => GetType().Name;
+
+        public bool Active => true;
+
+        public string Name => Resources.Module1.CloseCommandName;
+    }
+
+    [MenuGroupItem("Help", "SendFeedback|Feedback")]
+    [Export(typeof(IModuleCommand))]
+    public class SendFeedback : IModuleCommand
+    {
+        private ICommand _command;
+
+        public ICommand Command
+        {
+            get { return _command = _command ?? new RelayCommand(x => { (Module as IModule1Contract).SendFeedback(); }); }
         }
 
         public IModuleContract Module { get; set; }
