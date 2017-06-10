@@ -19,6 +19,7 @@ namespace Hdd.Presentation.Core
                 menu.Parse(moduleCommand.Metadata.Items, moduleCommand.Value);
             }
             menu.AddSeparators();
+            menu.ActivateParents();
 
             return menu;
         }

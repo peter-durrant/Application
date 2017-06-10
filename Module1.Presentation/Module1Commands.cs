@@ -25,6 +25,46 @@ namespace Hdd.Module1.Presentation
         public string Name => Resources.Module1.OpenCommandName;
     }
 
+    [MenuGroupItem("File", "OpenSub", "Some")]
+    [Export(typeof(IModuleCommand))]
+    public class OpenSome : IModuleCommand
+    {
+        private ICommand _command;
+
+        public ICommand Command
+        {
+            get { return _command = _command ?? new RelayCommand(x => { (Module as IModule1Contract).Open(); }); }
+        }
+
+        public IModuleContract Module { get; set; }
+
+        public string Id => GetType().Name;
+
+        public bool Active => false;
+
+        public string Name => Resources.Module1.OpenCommandName;
+    }
+
+    [MenuGroupItem("File", "OpenSub", "All")]
+    [Export(typeof(IModuleCommand))]
+    public class OpenAll : IModuleCommand
+    {
+        private ICommand _command;
+
+        public ICommand Command
+        {
+            get { return _command = _command ?? new RelayCommand(x => { (Module as IModule1Contract).Open(); }); }
+        }
+
+        public IModuleContract Module { get; set; }
+
+        public string Id => GetType().Name;
+
+        public bool Active => true;
+
+        public string Name => Resources.Module1.OpenCommandName;
+    }
+
     [MenuGroupItem("File", "Close|10")]
     [Export(typeof(IModuleCommand))]
     public class Close : IModuleCommand

@@ -19,6 +19,7 @@
                         <Style TargetType="MenuItem">
                             <Setter Property="Command" Value="{Binding Command}" />
                             <Setter Property="IsEnabled" Value="{Binding Active}" />
+                            <Setter Property="ItemsSource" Value="{Binding Items}" />
 
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Separator}" Value="True">

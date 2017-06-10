@@ -140,6 +140,23 @@ namespace Menu.Core
             }
         }
 
+        public void ActivateParents()
+        {
+            ActivateParents(RootMenu);
+        }
+
+        private static void ActivateParents(MenuItem parent)
+        {
+            foreach (var item in parent.Items)
+            {
+                if (item.Items.Any())
+                {
+                    item.Active = true;
+                }
+                ActivateParents(item);
+            }
+        }
+
 
         private struct GroupPrecedence
         {

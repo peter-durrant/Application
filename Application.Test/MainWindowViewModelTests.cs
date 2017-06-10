@@ -32,10 +32,14 @@ namespace Application.Test
             var fileMenu = rootMenuItems[0].Items.ToList();
             var helpMenu = rootMenuItems[1].Items.ToList();
             Assert.AreEqual("Open", fileMenu[0].Name);
-            Assert.AreEqual("Close", fileMenu[1].Name);
-            Assert.AreEqual("Print", fileMenu[2].Name);
-            Assert.IsTrue(fileMenu[3].Separator);
-            Assert.AreEqual("Exit", fileMenu[4].Name);
+            Assert.AreEqual("OpenSub", fileMenu[1].Name);
+            var openSubMenu = fileMenu[1].Items.ToList();
+            Assert.AreEqual("Some", openSubMenu[0].Name);
+            Assert.AreEqual("All", openSubMenu[1].Name);
+            Assert.AreEqual("Close", fileMenu[2].Name);
+            Assert.AreEqual("Print", fileMenu[3].Name);
+            Assert.IsTrue(fileMenu[4].Separator);
+            Assert.AreEqual("Exit", fileMenu[5].Name);
             Assert.AreEqual("About", helpMenu[0].Name);
             Assert.IsTrue(helpMenu[1].Separator);
             Assert.AreEqual("SendFeedback", helpMenu[2].Name);
