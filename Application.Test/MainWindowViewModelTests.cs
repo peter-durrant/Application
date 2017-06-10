@@ -34,10 +34,12 @@ namespace Application.Test
             Assert.AreEqual("Open", fileMenu[0].Name);
             Assert.AreEqual("Close", fileMenu[1].Name);
             Assert.AreEqual("Print", fileMenu[2].Name);
-            Assert.AreEqual("Exit", fileMenu[3].Name);
+            Assert.IsTrue(fileMenu[3].Separator);
+            Assert.AreEqual("Exit", fileMenu[4].Name);
             Assert.AreEqual("About", helpMenu[0].Name);
-            Assert.AreEqual("SendFeedback", helpMenu[1].Name);
-            Assert.AreEqual("Feedback", helpMenu[1].Group);
+            Assert.IsTrue(helpMenu[1].Separator);
+            Assert.AreEqual("SendFeedback", helpMenu[2].Name);
+            Assert.AreEqual("Feedback", helpMenu[2].Group);
         }
     }
 }
