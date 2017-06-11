@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMenuCommandEvents.cs" />
     <Compile Include="IMenuCommand.cs" />
     <Compile Include="MenuHelper.cs" />
     <Compile Include="Menu.cs" />

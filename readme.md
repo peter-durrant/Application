@@ -78,13 +78,91 @@ Create the default language .resx and then translate into language-specific .res
 
 The main menu is constructed taking into account each loaded module and features language localisation.
 
-Each command identified as a menu item (or module command) implements `IModuleCommand` and has the `ModuleLocationAttribute`.
+#### Menu
+
+Each command identified as a menu item implemented as `IModuleCommand` and has the `MenuGroupItemAttribute` to identify where in the menu structure the command should appear. The commands implement `INotifyPropertyChanged`
+to ensure that WPF containers are updated if the menu items are updated.
 
 ```c#
-[ModuleLocation("File")]
+[MenuGroupItem("File")]
 [Export(typeof(IModuleCommand))]
-public class MyCommand : IModuleCommand
+public class MyCommand : NotifyPropertyChanged, IModuleCommand
 ```
+
+The menu is constructed from core menu items and items from MEF loaded modules.
+
+The core items are implented in [MainMenuCommands.cs](./Application/MainMenuCommands.cs) and created by the `MainWindowViewModel` ([MainWindowViewModel.cs](./Application/MainWindowViewModel.cs)).
+
+```c#
+var coreMenu = new List<IMenuCommand> {new File(), new Help()};
+MainMenuViewModel = new MainMenuViewModel(coreMenu, Modules);
+```
+
+Additionally, any modules that implement `IModuleContract` and have commands that implement `IModuleCommand` will be loaded by `MainWindowViewModel` ([MainWindowViewModel.cs](./Application/MainWindowViewModel.cs)) using MEF composition.
+
+The `MenuGroupItem` attribute allows complex menus to be defined. The parameter is a string array, with each string represeting the syntax to define menu items. The components of the
+array represent the menu path, so that a File/Exit menu item would be defined as:
+
+```c#
+[MenuGroupItem("File", "Exit")]
+```
+
+By default, the order of menus added to the parent is determined by the order menus are loaded by the MEF module loader - if Module2 is loaded before Module1 then the items would be added from Module2 first.
+
+##### Menu Definition
+
+In order to control the ordering of menu items, it is possible to define a precedence such that:
+
+```c#
+[MenuGroupItem("File", "Exit|999")]
+public class ExitCommand : NotifyPropertyChanged, IModuleCommand
+...
+
+[MenuGroupItem("File", "Open|1")]
+public class OpenCommand : NotifyPropertyChanged, IModuleCommand
+...
+```
+
+would produce a menu:
+
+1. File
+
+  1. Open
+  2. Exit
+
+The depth of menus is not limited.
+
+`MenuHelper` defines a parser for the text in each string item in the `MenuGroupItem` attribute.
+
+Menu items can also be grouped where each group is delimited by a separator (horizontal line). See [MenuTests](./Application/Menu.Core.Test/MenuTests.cs) for examples.
+
+##### Enabling and Disabling Menu Items
+
+A menu item can be enabled/disabled by setting the `Active` parameter on the command class:
+
+```c#
+public Open()
+{
+    Active = true;
+}
+
+public bool Active
+{
+    get { return _active; }
+    set
+    {
+        _active = value;
+        OnPropertyChanged();
+    }
+}
+```
+
+Note, that if the `Active` value is updated (or any other property that may be required) then the `PropertyChanged` event fires.
+
+#### Module Commands
+
+The commands require an implementation of the `IModuleCommand` interface. This allows each module's command to call into the module code once the menu has been constructed.
+Each menu item can be enabled or disabled, and the displayed menu name is defined (and is fully localised if a string resource is referenced appropriately).
 
 # Future Work
 

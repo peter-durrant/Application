@@ -4,87 +4,87 @@ using System.Windows.Input;
 
 namespace Hdd.Presentation.Core
 {
-   public class RelayCommand : ICommand
-   {
-      public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
-      {
-         if (execute == null)
-         {
-            throw new ArgumentNullException(nameof(execute));
-         }
-         _execute = execute;
-         _canExecute = canExecute;
-      }
+    public class RelayCommand : ICommand
+    {
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        {
+            if (execute == null)
+            {
+                throw new ArgumentNullException(nameof(execute));
+            }
+            _execute = execute;
+            _canExecute = canExecute;
+        }
 
-      #region Fields
+        #region Fields
 
-      private readonly Action<object> _execute;
-      private readonly Predicate<object> _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Predicate<object> _canExecute;
 
-      #endregion // Fields
+        #endregion // Fields
 
-      #region ICommand Members
+        #region ICommand Members
 
-      [DebuggerStepThrough]
-      public bool CanExecute(object parameter)
-      {
-         return _canExecute?.Invoke(parameter) ?? true;
-      }
+        [DebuggerStepThrough]
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke(parameter) ?? true;
+        }
 
-      public event EventHandler CanExecuteChanged
-      {
-         add { CommandManager.RequerySuggested += value; }
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
 
-         remove { CommandManager.RequerySuggested -= value; }
-      }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
-      public void Execute(object parameter)
-      {
-         _execute(parameter);
-      }
+        public void Execute(object parameter)
+        {
+            _execute(parameter);
+        }
 
-      #endregion // ICommand Members 
-   }
+        #endregion // ICommand Members 
+    }
 
-   public class RelayCommand<T> : ICommand
-   {
-      public RelayCommand(Action<T> execute, Predicate<T> canExecute = null)
-      {
-         if (execute == null)
-         {
-            throw new ArgumentNullException(nameof(execute));
-         }
-         _execute = execute;
-         _canExecute = canExecute;
-      }
+    public class RelayCommand<T> : ICommand
+    {
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute = null)
+        {
+            if (execute == null)
+            {
+                throw new ArgumentNullException(nameof(execute));
+            }
+            _execute = execute;
+            _canExecute = canExecute;
+        }
 
-      #region Fields
+        #region Fields
 
-      private readonly Action<T> _execute;
-      private readonly Predicate<T> _canExecute;
+        private readonly Action<T> _execute;
+        private readonly Predicate<T> _canExecute;
 
-      #endregion // Fields
+        #endregion // Fields
 
-      #region ICommand Members
+        #region ICommand Members
 
-      [DebuggerStepThrough]
-      public bool CanExecute(object parameter)
-      {
-         return _canExecute?.Invoke((T) parameter) ?? true;
-      }
+        [DebuggerStepThrough]
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke((T) parameter) ?? true;
+        }
 
-      public event EventHandler CanExecuteChanged
-      {
-         add { CommandManager.RequerySuggested += value; }
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
 
-         remove { CommandManager.RequerySuggested -= value; }
-      }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
-      public void Execute(object parameter)
-      {
-         _execute((T) parameter);
-      }
+        public void Execute(object parameter)
+        {
+            _execute((T) parameter);
+        }
 
-      #endregion // ICommand Members 
-   }
+        #endregion // ICommand Members 
+    }
 }

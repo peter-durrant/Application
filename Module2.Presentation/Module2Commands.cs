@@ -1,15 +1,13 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Windows.Input;
 using Hdd.Contract;
 using Hdd.Presentation.Core;
-using HDD.Utility;
 
 namespace Hdd.Module2.Presentation
 {
     [MenuGroupItem("File", "Print|5")]
     [Export(typeof(IModuleCommand))]
-    public class Print : IModuleCommandWithEvents
+    public class Print : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -34,17 +32,16 @@ namespace Hdd.Module2.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module2.PrintCommandName;
-        public event EventHandler ActiveChanged;
     }
 
     [MenuGroupItem("File", "Exit|9999|Exit")]
     [Export(typeof(IModuleCommand))]
-    public class Exit : IModuleCommandWithEvents
+    public class Exit : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -69,11 +66,10 @@ namespace Hdd.Module2.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module2.ExitCommandName;
-        public event EventHandler ActiveChanged;
     }
 }

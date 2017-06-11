@@ -1,15 +1,13 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Windows.Input;
 using Hdd.Contract;
 using Hdd.Presentation.Core;
-using HDD.Utility;
 
 namespace Hdd.Module1.Presentation
 {
     [MenuGroupItem("File", "Open|1")]
     [Export(typeof(IModuleCommand))]
-    public class Open : IModuleCommandWithEvents
+    public class Open : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -34,18 +32,16 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
-
-        public event EventHandler ActiveChanged;
 
         public string Name => Resources.Module1.OpenCommandName;
     }
 
     [MenuGroupItem("File", "OpenSub")]
     [Export(typeof(IModuleCommand))]
-    public class OpenSub : IModuleCommand
+    public class OpenSub : NotifyPropertyChanged, IModuleCommand
     {
         public string Id => GetType().Name;
 
@@ -62,7 +58,7 @@ namespace Hdd.Module1.Presentation
 
     [MenuGroupItem("File", "OpenSub", "Some")]
     [Export(typeof(IModuleCommand))]
-    public class OpenSome : IModuleCommandWithEvents
+    public class OpenSome : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -87,18 +83,16 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
-
-        public event EventHandler ActiveChanged;
 
         public string Name => Resources.Module1.OpenCommandName;
     }
 
     [MenuGroupItem("File", "OpenSub", "All")]
     [Export(typeof(IModuleCommand))]
-    public class OpenAll : IModuleCommandWithEvents
+    public class OpenAll : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -123,18 +117,16 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module1.OpenCommandName;
-
-        public event EventHandler ActiveChanged;
     }
 
     [MenuGroupItem("File", "Close|10")]
     [Export(typeof(IModuleCommand))]
-    public class Close : IModuleCommandWithEvents
+    public class Close : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -159,18 +151,16 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module1.CloseCommandName;
-
-        public event EventHandler ActiveChanged;
     }
 
     [MenuGroupItem("Help", "About")]
     [Export(typeof(IModuleCommand))]
-    public class About : IModuleCommandWithEvents
+    public class About : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -202,17 +192,16 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module1.AboutCommandName;
-        public event EventHandler ActiveChanged;
     }
 
     [MenuGroupItem("Help", "SendFeedback|Feedback")]
     [Export(typeof(IModuleCommand))]
-    public class SendFeedback : IModuleCommandWithEvents
+    public class SendFeedback : NotifyPropertyChanged, IModuleCommand
     {
         private bool _active;
         private ICommand _command;
@@ -237,12 +226,10 @@ namespace Hdd.Module1.Presentation
             set
             {
                 _active = value;
-                ActiveChanged.Raise(this);
+                OnPropertyChanged();
             }
         }
 
         public string Name => Resources.Module1.SendFeedbackCommandName;
-
-        public event EventHandler ActiveChanged;
     }
 }
