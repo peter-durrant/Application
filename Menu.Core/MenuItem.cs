@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
 namespace Menu.Core
 {
-    public class MenuItem : IMenuCommand
+    public sealed class MenuItem : IMenuCommand
     {
-        private List<MenuItem> _subMenuItems;
-
         internal MenuItem() : this("root")
         {
         }
@@ -17,7 +16,7 @@ namespace Menu.Core
         {
             Name = name;
             Group = string.Empty;
-            _subMenuItems = new List<MenuItem>();
+            Items = new ObservableCollection<MenuItem>();
         }
 
         private MenuItem(MenuGroupItem item)
@@ -32,21 +31,29 @@ namespace Menu.Core
             Group = item.Group;
             GroupPrecedence = item.GroupPrecedence;
 
-            _subMenuItems = new List<MenuItem>();
+            Items = new ObservableCollection<MenuItem>();
         }
 
         public int Precedence { get; }
         public string Group { get; }
         public int GroupPrecedence { get; }
 
+        public IMenuCommand MenuCommand { get; set; }
 
-        public IEnumerable<MenuItem> Items => _subMenuItems;
+        public ObservableCollection<MenuItem> Items { get; private set; }
+
         public bool Separator { get; set; }
 
+        public bool Active
+        {
+            get { return MenuCommand?.Active == null || MenuCommand.Active; }
+            set { MenuCommand.Active = value; }
+        }
+
+        public ICommand Command => MenuCommand?.Command;
+
         public string Id { get; set; }
-        public bool Active { get; set; }
         public string Name { get; set; }
-        public ICommand Command { get; set; }
 
         private static MenuItem CreateSeparator()
         {
@@ -55,40 +62,40 @@ namespace Menu.Core
 
         internal MenuItem AddOrGetMenuItem(string name)
         {
-            if (!_subMenuItems.Exists(x => x.Name == name))
+            if (Items.All(item => item.Name != name))
             {
-                _subMenuItems.Add(new MenuItem(name));
+                Items.Add(new MenuItem(name));
             }
-            return _subMenuItems.Single(x => x.Name == name);
+            return Items.Single(x => x.Name == name);
         }
 
         internal MenuItem AddOrGetMenuItem(MenuGroupItem item)
         {
-            if (_subMenuItems.Exists(x => x.Name == item.Name && x.Group != item.Group))
+            if (Items.Any(x => x.Name == item.Name && x.Group != item.Group))
             {
                 throw new InvalidOperationException($"A menu item can only appear in one group: {item.Name} cannot be added to group {item.Group}");
             }
 
-            var matchedItems = _subMenuItems.Where(x => x.Name == item.Name && x.Group == item.Group);
+            var matchedItems = Items.Where(x => x.Name == item.Name && x.Group == item.Group);
             var menuItems = matchedItems as IList<MenuItem> ?? matchedItems.ToList();
             if (!menuItems.Any())
             {
-                _subMenuItems.Add(new MenuItem(item));
+                Items.Add(new MenuItem(item));
             }
             else if (menuItems.First().Precedence != item.Precedence || menuItems.First().GroupPrecedence != item.GroupPrecedence)
             {
                 throw new InvalidOperationException(
                     $"Cannot add items with different precedence {item.Precedence}/{item.GroupPrecedence} to group precedence {menuItems.First().Precedence}/{menuItems.First().GroupPrecedence}");
             }
-            return _subMenuItems.Single(x => x.Name == item.Name);
+            return Items.Single(x => x.Name == item.Name);
         }
 
         public void AddSeparator()
         {
-            var subMenuItems = new List<MenuItem>();
+            var subMenuItems = new ObservableCollection<MenuItem>();
             var first = true;
             string group = null;
-            foreach (var item in _subMenuItems)
+            foreach (var item in Items)
             {
                 if (first)
                 {
@@ -102,7 +109,7 @@ namespace Menu.Core
                 }
                 subMenuItems.Add(item);
             }
-            _subMenuItems = subMenuItems;
+            Items = subMenuItems;
         }
     }
 }

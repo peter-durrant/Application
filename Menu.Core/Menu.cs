@@ -112,8 +112,7 @@ namespace Menu.Core
 
         private static void UpdateMenuItemProperties(IMenuCommand menuCommand, MenuItem menuItem)
         {
-            menuItem.Command = menuCommand.Command;
-            menuItem.Active = menuCommand.Active;
+            menuItem.MenuCommand = menuCommand;
         }
 
         public void AddSeparators()
@@ -151,7 +150,10 @@ namespace Menu.Core
             {
                 if (item.Items.Any())
                 {
-                    item.Active = true;
+                    if (item.MenuCommand != null)
+                    {
+                        item.MenuCommand.Active = true;
+                    }
                 }
                 ActivateParents(item);
             }

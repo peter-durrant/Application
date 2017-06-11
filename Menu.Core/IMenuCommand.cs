@@ -12,7 +12,7 @@ namespace Menu.Core
         /// <summary>
         ///     Is true if the command can be run.
         /// </summary>
-        bool Active { get; }
+        bool Active { get; set; }
 
         /// <summary>
         ///     Command to execute.

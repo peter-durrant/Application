@@ -72,6 +72,10 @@
       <Project>{9d2dac21-a791-4a11-993c-c0d1a85736fc}</Project>
       <Name>Presentation.Module</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{23FB320B-6A33-43AE-A7BA-E203DD864DF1}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

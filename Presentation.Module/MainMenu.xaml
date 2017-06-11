@@ -17,8 +17,8 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Items}">
                     <HierarchicalDataTemplate.ItemContainerStyle>
                         <Style TargetType="MenuItem">
-                            <Setter Property="Command" Value="{Binding Command}" />
-                            <Setter Property="IsEnabled" Value="{Binding Active}" />
+                            <Setter Property="Command" Value="{Binding MenuCommand.Command}" />
+                            <Setter Property="IsEnabled" Value="{Binding MenuCommand.Active}" />
                             <Setter Property="ItemsSource" Value="{Binding Items}" />
 
                             <Style.Triggers>
