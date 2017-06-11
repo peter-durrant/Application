@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Hdd.Module1.Resources {
+namespace Hdd.Application.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Hdd.Module1.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Module1 {
+    public class Application {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Module1() {
+        internal Application() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Hdd.Module1.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hdd.Module1.Resources.Module1", typeof(Module1).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hdd.Application.Resources.Application", typeof(Application).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,47 +70,11 @@ namespace Hdd.Module1.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close.
+        ///   Looks up a localized string similar to File.
         /// </summary>
-        public static string CloseCommandName {
+        public static string FileCommandName {
             get {
-                return ResourceManager.GetString("CloseCommandName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hi.
-        /// </summary>
-        public static string Hello {
-            get {
-                return ResourceManager.GetString("Hello", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open.
-        /// </summary>
-        public static string OpenCommandName {
-            get {
-                return ResourceManager.GetString("OpenCommandName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Open options.
-        /// </summary>
-        public static string OpenSubCommandName {
-            get {
-                return ResourceManager.GetString("OpenSubCommandName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Send Feedback.
-        /// </summary>
-        public static string SendFeedbackCommandName {
-            get {
-                return ResourceManager.GetString("SendFeedbackCommandName", resourceCulture);
+                return ResourceManager.GetString("FileCommandName", resourceCulture);
             }
         }
     }

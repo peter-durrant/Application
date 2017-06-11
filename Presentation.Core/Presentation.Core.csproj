@@ -79,6 +79,10 @@
       <Project>{2816C338-E177-413E-80E7-63382349ECCF}</Project>
       <Name>ModuleLoader</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{23fb320b-6a33-43ae-a7ba-e203dd864df1}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -43,6 +43,23 @@ namespace Hdd.Module1.Presentation
         public string Name => Resources.Module1.OpenCommandName;
     }
 
+    [MenuGroupItem("File", "OpenSub")]
+    [Export(typeof(IModuleCommand))]
+    public class OpenSub : IModuleCommand
+    {
+        public string Id => GetType().Name;
+
+        public bool Active
+        {
+            get { return true; }
+            set { }
+        }
+
+        public ICommand Command { get; }
+        public string Name => Resources.Module1.OpenSubCommandName;
+        public IModuleContract Module { get; set; }
+    }
+
     [MenuGroupItem("File", "OpenSub", "Some")]
     [Export(typeof(IModuleCommand))]
     public class OpenSome : IModuleCommandWithEvents
@@ -189,7 +206,7 @@ namespace Hdd.Module1.Presentation
             }
         }
 
-        public string Name => Resources.Module1.CloseCommandName;
+        public string Name => Resources.Module1.AboutCommandName;
         public event EventHandler ActiveChanged;
     }
 
@@ -224,7 +241,7 @@ namespace Hdd.Module1.Presentation
             }
         }
 
-        public string Name => Resources.Module1.CloseCommandName;
+        public string Name => Resources.Module1.SendFeedbackCommandName;
 
         public event EventHandler ActiveChanged;
     }

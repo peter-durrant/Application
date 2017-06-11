@@ -120,19 +120,7 @@
   <data name="AboutCommandName" xml:space="preserve">
     <value>About</value>
   </data>
-  <data name="CloseCommandName" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="Hello" xml:space="preserve">
-    <value>Hi</value>
-  </data>
-  <data name="OpenCommandName" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="OpenSubCommandName" xml:space="preserve">
-    <value>Open options</value>
-  </data>
-  <data name="SendFeedbackCommandName" xml:space="preserve">
-    <value>Send Feedback</value>
+  <data name="FileCommandName" xml:space="preserve">
+    <value>File</value>
   </data>
 </root>

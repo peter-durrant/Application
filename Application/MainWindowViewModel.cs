@@ -6,6 +6,7 @@ using Hdd.Contract;
 using Hdd.Logger;
 using Hdd.ModuleLoader;
 using Hdd.Presentation.Core;
+using Menu.Core;
 
 namespace Hdd.Application
 {
@@ -25,7 +26,11 @@ namespace Hdd.Application
             _compositionHelper = new CompositionHelper<IModuleContract>();
             _compositionHelper.AssembleModuleComponents();
 
-            MainMenuViewModel = new MainMenuViewModel(Modules);
+            // core menu
+            var coreMenu = new List<IMenuCommand> {new File(), new About()};
+
+            // generate full menu (core + modules)
+            MainMenuViewModel = new MainMenuViewModel(coreMenu, Modules);
         }
 
         public IEnumerable<Lazy<IModuleContract>> Modules => _compositionHelper.Modules;

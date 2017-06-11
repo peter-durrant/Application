@@ -62,6 +62,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainMenuCommands.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,6 +97,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Application.Resources\Application.Resources.csproj">
+      <Project>{26e9b52b-b36e-47c9-96d1-44e8d0e06e41}</Project>
+      <Name>Application.Resources</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{aeeb27b4-3920-4d35-948a-b28ac65856c8}</Project>
       <Name>Logger</Name>
@@ -103,6 +108,10 @@
     <ProjectReference Include="..\Contract\Contract.csproj">
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Menu.Core\Menu.Core.csproj">
+      <Project>{0BB50C79-8B66-4332-A848-5BFABA326608}</Project>
+      <Name>Menu.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\ModuleLoader\ModuleLoader.csproj">
       <Project>{2816c338-e177-413e-80e7-63382349eccf}</Project>
@@ -115,10 +124,6 @@
     <ProjectReference Include="..\Presentation.Module\Presentation.Module.csproj">
       <Project>{9D2DAC21-A791-4A11-993C-C0D1A85736FC}</Project>
       <Name>Presentation.Module</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utility\Utility.csproj">
-      <Project>{23fb320b-6a33-43ae-a7ba-e203dd864df1}</Project>
-      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

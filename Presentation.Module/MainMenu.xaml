@@ -28,10 +28,10 @@
                             </Style.Triggers>
                         </Style>
                     </HierarchicalDataTemplate.ItemContainerStyle>
-                    <TextBlock Text="{Binding Path=Name}" />
+                    <TextBlock Text="{Binding Path=MenuCommand.Name}" />
                     <HierarchicalDataTemplate.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Text="{Binding MenuCommand.Name}" />
                         </DataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
                 </HierarchicalDataTemplate>
