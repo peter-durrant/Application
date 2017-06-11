@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutCommandName" xml:space="preserve">
-    <value>About</value>
+  <data name="HelpCommandName" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="FileCommandName" xml:space="preserve">
     <value>File</value>

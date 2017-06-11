@@ -27,7 +27,7 @@ namespace Hdd.Application
             _compositionHelper.AssembleModuleComponents();
 
             // core menu
-            var coreMenu = new List<IMenuCommand> {new File(), new About()};
+            var coreMenu = new List<IMenuCommand> {new File(), new Help()};
 
             // generate full menu (core + modules)
             MainMenuViewModel = new MainMenuViewModel(coreMenu, Modules);

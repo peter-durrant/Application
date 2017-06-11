@@ -20,8 +20,8 @@ namespace Hdd.Application
         public IModuleContract Module { get; set; }
     }
 
-    [MenuGroupItem("About")]
-    public class About : IModuleCommand
+    [MenuGroupItem("Help")]
+    public class Help : IModuleCommand
     {
         public string Id => GetType().Name;
 
@@ -32,7 +32,7 @@ namespace Hdd.Application
         }
 
         public ICommand Command => null;
-        public string Name => Resources.Application.AboutCommandName;
+        public string Name => Resources.Application.HelpCommandName;
         public IModuleContract Module { get; set; }
     }
 }

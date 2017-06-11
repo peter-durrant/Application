@@ -61,20 +61,20 @@ namespace Hdd.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string AboutCommandName {
-            get {
-                return ResourceManager.GetString("AboutCommandName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string FileCommandName {
             get {
                 return ResourceManager.GetString("FileCommandName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string HelpCommandName {
+            get {
+                return ResourceManager.GetString("HelpCommandName", resourceCulture);
             }
         }
     }
