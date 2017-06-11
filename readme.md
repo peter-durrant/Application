@@ -134,7 +134,7 @@ The depth of menus is not limited.
 
 `MenuHelper` defines a parser for the text in each string item in the `MenuGroupItem` attribute.
 
-Menu items can also be grouped where each group is delimited by a separator (horizontal line). See [MenuTests](./Application/Menu.Core.Test/MenuTests.cs) for examples.
+Menu items can also be grouped where each group is delimited by a separator (horizontal line). See [MenuTests.cs](./Menu.Core.Test/MenuTests.cs) for examples.
 
 ##### Enabling and Disabling Menu Items
 
