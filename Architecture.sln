@@ -44,13 +44,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2.Presentation", "Mod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D869413E-7C78-47DC-B3FD-E8EC5C077B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Test", "Application.Test\Application.Test.csproj", "{38574EFA-03A7-4668-AAD6-7B73058E5FAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Test", "Test\Application.Test\Application.Test.csproj", "{38574EFA-03A7-4668-AAD6-7B73058E5FAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Framework\Utility\Utility.csproj", "{23FB320B-6A33-43AE-A7BA-E203DD864DF1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Core", "Framework\Menu.Core\Menu.Core.csproj", "{0BB50C79-8B66-4332-A848-5BFABA326608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Core.Test", "Menu.Core.Test\Menu.Core.Test.csproj", "{CACDA898-C2BB-44E7-990E-4C21A3D654EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Menu.Core.Test", "Test\Framework\Menu.Core.Test\Menu.Core.Test.csproj", "{CACDA898-C2BB-44E7-990E-4C21A3D654EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Resources", "Application.Resources\Application.Resources.csproj", "{26E9B52B-B36E-47C9-96D1-44E8D0E06E41}"
 EndProject
