@@ -105,7 +105,7 @@
       <Project>{aeeb27b4-3920-4d35-948a-b28ac65856c8}</Project>
       <Name>Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Contract\Contract.csproj">
+    <ProjectReference Include="..\Module\Contract\Contract.csproj">
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
     </ProjectReference>

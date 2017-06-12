@@ -52,7 +52,7 @@
       <Project>{24ED38BF-0EA0-48F2-B677-477DD27EB097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Framework\Menu.Core\Menu.Core.csproj">
+    <ProjectReference Include="..\..\Framework\Menu.Core\Menu.Core.csproj">
       <Project>{0BB50C79-8B66-4332-A848-5BFABA326608}</Project>
       <Name>Menu.Core</Name>
     </ProjectReference>
@@ -64,11 +64,11 @@
       <Project>{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}</Project>
       <Name>Module2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Framework\Presentation.Core\Presentation.Core.csproj">
+    <ProjectReference Include="..\..\Framework\Presentation.Core\Presentation.Core.csproj">
       <Project>{63C25E57-A90E-42B7-9C18-D59C0E0379CE}</Project>
       <Name>Presentation.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Framework\Utility\Utility.csproj">
+    <ProjectReference Include="..\..\Framework\Utility\Utility.csproj">
       <Project>{23FB320B-6A33-43AE-A7BA-E203DD864DF1}</Project>
       <Name>Utility</Name>
     </ProjectReference>

@@ -56,7 +56,7 @@
       <Project>{99622630-6c23-46bd-8b64-abb1fc177255}</Project>
       <Name>Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Contract\Contract.csproj">
+    <ProjectReference Include="..\Module\Contract\Contract.csproj">
       <Project>{24ed38bf-0ea0-48f2-b677-477dd27eb097}</Project>
       <Name>Contract</Name>
     </ProjectReference>
@@ -64,19 +64,19 @@
       <Project>{0BB50C79-8B66-4332-A848-5BFABA326608}</Project>
       <Name>Menu.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Module1.Presentation\Module1.Presentation.csproj">
+    <ProjectReference Include="..\Module\Module1.Presentation\Module1.Presentation.csproj">
       <Project>{ae795556-c9b9-482e-81b1-14f42b06f05f}</Project>
       <Name>Module1.Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Module1\Module1.csproj">
+    <ProjectReference Include="..\Module\Module1\Module1.csproj">
       <Project>{e0767419-02c9-4a84-a608-ec98872060f7}</Project>
       <Name>Module1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Module2.Presentation\Module2.Presentation.csproj">
+    <ProjectReference Include="..\Module\Module2.Presentation\Module2.Presentation.csproj">
       <Project>{aa6cafdc-1196-4551-a6fb-7b311dd4edb4}</Project>
       <Name>Module2.Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Module2\Module2.csproj">
+    <ProjectReference Include="..\Module\Module2\Module2.csproj">
       <Project>{1cfc2ee8-91a7-476a-aab8-3338fc1a1088}</Project>
       <Name>Module2</Name>
     </ProjectReference>

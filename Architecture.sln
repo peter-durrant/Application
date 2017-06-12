@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{99622630-6C23-46BD-8B64-ABB1FC177255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{24ED38BF-0EA0-48F2-B677-477DD27EB097}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Module\Contract\Contract.csproj", "{24ED38BF-0EA0-48F2-B677-477DD27EB097}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleLoader", "Framework\ModuleLoader\ModuleLoader.csproj", "{2816C338-E177-413E-80E7-63382349ECCF}"
 EndProject
@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Framework\Logger\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{85C2743D-3C4E-46EC-98D1-2EB57353ED31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1", "Module1\Module1.csproj", "{E0767419-02C9-4A84-A608-EC98872060F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1", "Module\Module1\Module1.csproj", "{E0767419-02C9-4A84-A608-EC98872060F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2", "Module2\Module2.csproj", "{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2", "Module\Module2\Module2.csproj", "{1CFC2EE8-91A7-476A-AAB8-3338FC1A1088}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Core", "Framework\Presentation.Core\Presentation.Core.csproj", "{63C25E57-A90E-42B7-9C18-D59C0E0379CE}"
 EndProject
@@ -28,21 +28,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module1", "Module1", "{7331
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module2", "Module2", "{B4567854-5C74-4009-B167-6D83ADBDC80F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1.Resources", "Module1.Resources\Module1.Resources.csproj", "{40B6BB8D-55C8-4448-8C0E-D96609B8A2E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1.Resources", "Module\Module1.Resources\Module1.Resources.csproj", "{40B6BB8D-55C8-4448-8C0E-D96609B8A2E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2.Resources", "Module2.Resources\Module2.Resources.csproj", "{3D2D0BD3-CFEC-43BA-95FB-B2DF02381529}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2.Resources", "Module\Module2.Resources\Module2.Resources.csproj", "{3D2D0BD3-CFEC-43BA-95FB-B2DF02381529}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{F2D7858B-D555-447B-AA84-410754BE75AF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature1", "Feature1", "{48F6565D-5A5B-4CC6-80C4-7E6D555EEE68}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature1", "Module\Feature1", "{48F6565D-5A5B-4CC6-80C4-7E6D555EEE68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feature1", "Feature1\Feature1.csproj", "{076B29E7-74AB-4113-916B-122EC8B2D64B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{23064788-ADB4-4415-B37A-2715ED2EC811}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1.Presentation", "Module\Module1.Presentation\Module1.Presentation.csproj", "{AE795556-C9B9-482E-81B1-14F42B06F05F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1.Presentation", "Module1.Presentation\Module1.Presentation.csproj", "{AE795556-C9B9-482E-81B1-14F42B06F05F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2.Presentation", "Module2.Presentation\Module2.Presentation.csproj", "{AA6CAFDC-1196-4551-A6FB-7B311DD4EDB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2.Presentation", "Module\Module2.Presentation\Module2.Presentation.csproj", "{AA6CAFDC-1196-4551-A6FB-7B311DD4EDB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D869413E-7C78-47DC-B3FD-E8EC5C077B9D}"
 EndProject
