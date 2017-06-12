@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:application="clr-namespace:Hdd.Application"
         xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
-        xmlns:module="clr-namespace:Hdd.Presentation.Module;assembly=Hdd.Presentation.Module"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance application:MainWindowViewModel}">
     <Window.DataContext>
         <application:MainWindowViewModel />
     </Window.DataContext>
     <StackPanel>
-        <module:MainMenu DataContext="{Binding MainMenuViewModel, Mode=OneWay}" />
+        <core:MainMenu DataContext="{Binding MainMenuViewModel, Mode=OneWay}" />
         <Grid>
             <ItemsControl ItemsSource="{Binding Path=Modules, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>

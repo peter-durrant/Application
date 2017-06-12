@@ -121,10 +121,6 @@
       <Project>{63C25E57-A90E-42B7-9C18-D59C0E0379CE}</Project>
       <Name>Presentation.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Presentation.Module\Presentation.Module.csproj">
-      <Project>{9D2DAC21-A791-4A11-993C-C0D1A85736FC}</Project>
-      <Name>Presentation.Module</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

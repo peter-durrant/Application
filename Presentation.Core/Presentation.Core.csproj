@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="IModuleCommand.cs" />
     <Compile Include="IMenuGroupItemAttribute.cs" />
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuViewModel.cs" />
     <Compile Include="MenuBuilder.cs" />
     <Compile Include="MenuGroupItemAttribute.cs" />
@@ -58,6 +61,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="NameValueControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

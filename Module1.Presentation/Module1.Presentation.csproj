@@ -68,10 +68,6 @@
       <Project>{63C25E57-A90E-42B7-9C18-D59C0E0379CE}</Project>
       <Name>Presentation.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Presentation.Module\Presentation.Module.csproj">
-      <Project>{9d2dac21-a791-4a11-993c-c0d1a85736fc}</Project>
-      <Name>Presentation.Module</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{23FB320B-6A33-43AE-A7BA-E203DD864DF1}</Project>
       <Name>Utility</Name>
