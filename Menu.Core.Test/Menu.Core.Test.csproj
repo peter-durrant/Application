@@ -54,7 +54,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Menu.Core\Menu.Core.csproj">
+    <ProjectReference Include="..\Framework\Menu.Core\Menu.Core.csproj">
       <Project>{0BB50C79-8B66-4332-A848-5BFABA326608}</Project>
       <Name>Menu.Core</Name>
     </ProjectReference>
