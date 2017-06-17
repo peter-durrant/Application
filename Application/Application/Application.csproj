@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Presentation.Controls\Presentation.Controls.csproj">
+      <Project>{13c4737e-9ec7-42e6-a98f-af9967dd9c84}</Project>
+      <Name>Presentation.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Application.Resources\Application.Resources.csproj">
       <Project>{26e9b52b-b36e-47c9-96d1-44e8d0e06e41}</Project>
       <Name>Application.Resources</Name>

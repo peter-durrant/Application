@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:application="clr-namespace:Hdd.Application"
         xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
+        xmlns:controls="clr-namespace:Hdd.Presentation.Controls;assembly=Hdd.Presentation.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance application:MainWindowViewModel}">
     <Window.DataContext>
@@ -31,5 +32,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
+        <controls:RendererContainer MinHeight="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </StackPanel>
 </Window>

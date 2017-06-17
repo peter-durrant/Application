@@ -56,6 +56,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Resources", "Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{AC7BE79D-41F9-4C05-A8AF-AE3EC70854B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Controls.64bit", "Framework\Presentation.Controls.64bit\Presentation.Controls.64bit.csproj", "{E0F15B90-2393-4968-8EAA-959B4A3429A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Controls", "Framework\Presentation.Controls\Presentation.Controls.csproj", "{13C4737E-9EC7-42E6-A98F-AF9967DD9C84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +134,14 @@ Global
 		{26E9B52B-B36E-47C9-96D1-44E8D0E06E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26E9B52B-B36E-47C9-96D1-44E8D0E06E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E9B52B-B36E-47C9-96D1-44E8D0E06E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F15B90-2393-4968-8EAA-959B4A3429A5}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{E0F15B90-2393-4968-8EAA-959B4A3429A5}.Debug|Any CPU.Build.0 = Debug|x64
+		{E0F15B90-2393-4968-8EAA-959B4A3429A5}.Release|Any CPU.ActiveCfg = Release|x64
+		{E0F15B90-2393-4968-8EAA-959B4A3429A5}.Release|Any CPU.Build.0 = Release|x64
+		{13C4737E-9EC7-42E6-A98F-AF9967DD9C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C4737E-9EC7-42E6-A98F-AF9967DD9C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C4737E-9EC7-42E6-A98F-AF9967DD9C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C4737E-9EC7-42E6-A98F-AF9967DD9C84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,5 +165,7 @@ Global
 		{23FB320B-6A33-43AE-A7BA-E203DD864DF1} = {AC7BE79D-41F9-4C05-A8AF-AE3EC70854B6}
 		{0BB50C79-8B66-4332-A848-5BFABA326608} = {AC7BE79D-41F9-4C05-A8AF-AE3EC70854B6}
 		{CACDA898-C2BB-44E7-990E-4C21A3D654EB} = {D869413E-7C78-47DC-B3FD-E8EC5C077B9D}
+		{E0F15B90-2393-4968-8EAA-959B4A3429A5} = {AC7BE79D-41F9-4C05-A8AF-AE3EC70854B6}
+		{13C4737E-9EC7-42E6-A98F-AF9967DD9C84} = {AC7BE79D-41F9-4C05-A8AF-AE3EC70854B6}
 	EndGlobalSection
 EndGlobal
