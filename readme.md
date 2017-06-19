@@ -172,7 +172,7 @@ Visual Studio 2017 is a 32-bit application, or at least the WPF designer only su
 
 I present an option that has general controls built for "Any CPU" that can be wrapped in a container that can switch to a specific 64-bit control if that exists.
 
-There are two `Renderer` classes in this architecture, one built for "Any CPU" and one built specifically for "x64". A `RendererContainer` in [RendererContainer.cs](./Framework/Presentation.Controls/RendererContainer.cs)
+There are two `Renderer` classes in this architecture, one built for "Any CPU" and one built specifically for "x64". A `RendererContainer` in [RendererContainer.xaml.cs](./Framework/Presentation.Controls/RendererContainer.xaml.cs)
 switches to the appropriate implementation at runtime. This concept of the container switching between different components could be extended to a specific 32-bit control, which is more
 likely to reflect reality.
 
