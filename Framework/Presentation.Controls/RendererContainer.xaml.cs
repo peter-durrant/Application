@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -10,9 +11,9 @@ namespace Hdd.Presentation.Controls
     ///     Proxy to 32-bit and 64-bit implementations of Renderer
     ///     The 32-bit renderer is loaded by default (see .xaml) which has the advantage of appearing in the WPF/XAML designer.
     /// </summary>
-    public partial class RendererContainer : UserControl, IRenderer
+    public partial class RendererContainer : UserControl
     {
-        private readonly IRenderer _renderer;
+        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register("Color", typeof(Brush), typeof(RendererContainer), new PropertyMetadata(PropertyChangedCallback));
 
         public RendererContainer()
         {
@@ -23,19 +24,32 @@ namespace Hdd.Presentation.Controls
                 const string controls64BitAssembly = "Hdd.Presentation.Controls.64bit.dll";
                 var assembly = Assembly.LoadFrom(controls64BitAssembly);
                 var type = assembly.GetType("Hdd.Presentation.Controls._64bit.Renderer");
-                _renderer = (IRenderer) Activator.CreateInstance(type);
+                Renderer = (IRenderer) Activator.CreateInstance(type);
             }
             else
             {
-                _renderer = new Renderer();
+                Renderer = new Renderer();
             }
-            RendererContainerControl.Content = _renderer;
+            RendererContainerControl.Content = Renderer;
         }
+
+        private IRenderer Renderer { get; }
 
         public Brush Color
         {
-            get { return _renderer.Color; }
-            set { _renderer.Color = value; }
+            get { return (Brush) GetValue(ColorProperty); }
+            set { SetValue(ColorProperty, value); }
+        }
+
+        private static void PropertyChangedCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
+        {
+            if (dependencyObject is RendererContainer container)
+            {
+                if (dependencyPropertyChangedEventArgs.NewValue is Brush color)
+                {
+                    container.Renderer.FillColor = color;
+                }
+            }
         }
     }
 }

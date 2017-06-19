@@ -31,6 +31,9 @@ namespace Hdd.Application
 
             // generate full menu (core + modules)
             MainMenuViewModel = new MainMenuViewModel(coreMenu, Modules);
+
+            // generate a renderer
+            RendererViewModel = new RendererViewModel();
         }
 
         public IEnumerable<Lazy<IModuleContract>> Modules => _compositionHelper.Modules;
@@ -49,5 +52,7 @@ namespace Hdd.Application
         }
 
         public MainMenuViewModel MainMenuViewModel { get; }
+
+        public RendererViewModel RendererViewModel { get; }
     }
 }

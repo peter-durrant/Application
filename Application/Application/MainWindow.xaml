@@ -7,7 +7,7 @@
         xmlns:core="clr-namespace:Hdd.Presentation.Core;assembly=Hdd.Presentation.Core"
         xmlns:controls="clr-namespace:Hdd.Presentation.Controls;assembly=Hdd.Presentation.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance application:MainWindowViewModel}">
+        Title="MainWindow" Height="550" Width="525" d:DataContext="{d:DesignInstance application:MainWindowViewModel}">
     <Window.DataContext>
         <application:MainWindowViewModel />
     </Window.DataContext>
@@ -32,6 +32,9 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Grid>
-        <controls:RendererContainer MinHeight="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <controls:RendererContainer DataContext="{Binding RendererViewModel}" Color="{Binding Color}" MinHeight="200"
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Button Content="Button" Command="{Binding RendererViewModel.ChangeColorCommand}" />
+        <controls:Renderer Height="100" Color="{Binding RendererViewModel.Color}"/>
     </StackPanel>
 </Window>

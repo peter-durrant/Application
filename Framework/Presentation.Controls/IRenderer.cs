@@ -4,6 +4,6 @@ namespace Hdd.Presentation.Controls
 {
     public interface IRenderer
     {
-        Brush Color { get; set; }
+        Brush FillColor { get; set; }
     }
 }
