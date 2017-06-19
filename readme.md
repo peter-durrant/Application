@@ -164,6 +164,63 @@ Note, that if the `Active` value is updated (or any other property that may be r
 The commands require an implementation of the `IModuleCommand` interface. This allows each module's command to call into the module code once the menu has been constructed.
 Each menu item can be enabled or disabled, and the displayed menu name is defined (and is fully localised if a string resource is referenced appropriately).
 
+## Controls
+
+Visual Studio 2017 is a 32-bit application, or at least the WPF designer only supports 32-bit, so if 64-bit controls are used, they prevent the designer from working.
+
+### 32-bit and 64-bit Controls
+
+I present an option that has general controls built for "Any CPU" that can be wrapped in a container that can switch to a specific 64-bit control if that exists.
+
+There are two `Renderer` classes in this architecture, one built for "Any CPU" and one built specifically for "x64". A `RendererContainer` in [RendererContainer.cs](./Framework/Presentation.Controls/RendererContainer.cs)
+switches to the appropriate implementation at runtime. This concept of the container switching between different components could be extended to a specific 32-bit control, which is more
+likely to reflect reality.
+
+The constructor of `RendererContainer` loads the 32-bit (well "Any CPU" version) by default, unless a 64-bit environment is detected, when the 64-bit version is loaded through reflection
+to avoid processor architecture conflicts on the project references.
+
+```c#
+public RendererContainer()
+{
+    InitializeComponent();
+
+    if (Environment.Is64BitProcess)
+    {
+        const string controls64BitAssembly = "Hdd.Presentation.Controls.64bit.dll";
+        var assembly = Assembly.LoadFrom(controls64BitAssembly);
+        var type = assembly.GetType("Hdd.Presentation.Controls._64bit.Renderer");
+        Renderer = (IRenderer) Activator.CreateInstance(type);
+    }
+    else
+    {
+        Renderer = new Renderer();
+    }
+    RendererContainerControl.Content = Renderer;
+}
+```
+
+This allows the designer to keep working (since it is 32-bit it will request the "Any CPU" version and JIT that to 32-bit). If the application project settings have "Prefer 32-bit" set,
+then the application will use the "Any CPU" version (what I would call the default option in the code above).
+
+If the application runs on a 64-bit processor then the "Any CPU" application will need to prefer 64-bit over 32-bit for `RendererContainer` to correctly load the 64-bit control at runtime. In the
+application's .csproj set:
+
+```xml
+<Prefer32Bit>false</Prefer32Bit>
+```
+
+### Dependency Properties
+
+The `RendererContainer` must forward dependency properties to each of the `Renderer` classes, see the `Color` property on the container and each renderer.
+
+In the WPF [MainWindow.xaml](./Application/Application/MainWindow.xaml) it is possible to include either the `Renderer` directly or via the `RendererContainer` with the dependency property
+`Color` bound to the view model Color property.
+
+```xml
+<controls:Renderer Color="{Binding RendererViewModel.Color}" />
+<controls:RendererContainer Color="{Binding RendererViewModel.Color}" />
+```
+
 # Future Work
 
 ## Event Sourcing and CQRS
